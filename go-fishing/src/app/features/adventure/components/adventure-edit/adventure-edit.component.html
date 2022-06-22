@@ -1,0 +1,97 @@
+<mat-card class="mainCard">
+    <mat-card-title>
+        <h1>Izmena podataka avanture</h1>
+    </mat-card-title>
+    <mat-card-content>
+        <form class="form" [formGroup]="form">
+            <div class="row">
+                <div class="col-md-4">
+                    <mat-form-field class="inputField" appearance="fill">
+                        <mat-label>Naziv avanture</mat-label>
+                        <input matInput id="name" formControlName="name" placeholder="Naziv" [(ngModel)]="adventure.name" name="name" required> 
+                    </mat-form-field>
+                    
+                    <!--
+                    <div class="text-danger" *ngIf="nameError">
+                            Ovo polje je obavezno!
+                    </div>
+                    <mat-form-field>
+                        <input matInput formControlName="name" placeholder="Name" name="name" required>
+                    </mat-form-field>
+                    -->
+                    <mat-form-field class="inputField" appearance="fill"> 
+                        <mat-label>Promotivni opis</mat-label>
+                        <textarea matInput id="promo" placeholder="Opis" formControlName="promoDescription" [(ngModel)]="adventure.promoDescription" name="promo" required></textarea>
+                    </mat-form-field>
+                    
+                    <mat-form-field class="inputField" appearance="fill">
+                        <mat-label>Maksimalan broj osoba</mat-label>
+                        <input matInput id="maxNum" type="number" min="0" placeholder="Maksimalan broj" name="capacity" formControlName="capacity" [(ngModel)]="adventure.capacity" required>
+                    </mat-form-field>
+                    
+                    <mat-form-field class="inputField" appearance="fill">
+                        <mat-label>Pravila ponašanja</mat-label>
+                        <textarea matInput placeholder="Pravila" formControlName="rulesOfConduct" [(ngModel)]="adventure.rulesOfConduct" name="conduct"></textarea>
+                        <mat-hint>Pravila navoditi jedno ispod drugog</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field class="inputField" appearance="fill">
+                        <mat-label>Uslovi otkaza rezervacije</mat-label>
+                        <textarea matInput placeholder="Uslovi otkaza" formControlName="rulesOfCancelation" [(ngModel)]="adventure.rulesOfCancelation" name="cancelation"></textarea>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="inputField" appearance="fill">
+                        <mat-label>Ulica održavanja avanture</mat-label>
+                        <input matInput id="street" placeholder="Ulica" formControlName="street" [(ngModel)]="adventure.street" name="street" required>
+                    </mat-form-field>
+    
+                    <mat-form-field class="inputField" appearance="fill">
+                        <mat-label>Kratka biografija instruktora</mat-label>
+                        <textarea matInput id="bio" formControlName="instructorBiography" [(ngModel)]="adventure.instructorBiography" name="bio" placeholder="Kratka biografija" required></textarea>
+                    </mat-form-field>
+                    
+                    <mat-form-field class="inputField" appearance="fill" floatLabel="always">
+                        <mat-label>Cena avanture po osobi</mat-label>
+                        <input matInput id="price" type="number" min="0" formControlName="price" [(ngModel)]="adventure.price" name="price" placeholder="Cena" required>
+                        <span matPrefix>$&nbsp;</span>
+                    </mat-form-field>
+                    
+                    <mat-form-field class="inputField" appearance="fill">
+                        <mat-label>Dostupna oprema</mat-label>
+                        <textarea matInput [(ngModel)]="adventure.equipment" formControlName="equipment" name="equipment" placeholder="Oprema"></textarea>
+                        <mat-hint>Opremu navoditi jednu ispod druge</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field class="inputField" appearance="fill">
+                        <mat-label>Dodatne informacije</mat-label>
+                        <textarea matInput [(ngModel)]="adventure.moreInfo" formControlName="moreInfo" name="info" placeholder="informacije"></textarea>
+                    </mat-form-field>
+                    
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="inputField" appearance="fill">
+                        <mat-label>Grad održavanja avanture</mat-label>
+                        <input matInput id="city" placeholder="Grad" formControlName="city" [(ngModel)]="adventure.city" name="city" required>
+                    </mat-form-field>
+
+                    <mat-form-field class="inputField" appearance="fill">
+                        <mat-label>Država održavanja avanture</mat-label>
+                        <input matInput id="county" placeholder="Država" formControlName="country" [(ngModel)]="adventure.country" name="county" required>
+                    </mat-form-field>
+
+                    <div class="full" id="map"> 
+
+                    </div>
+                    
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="buttons">
+                    <span class="buttons" id="return"><a routerLink="/instructorProfile/{{adventure.instructorId}}" routerLinkActive="active"><button mat-raised-button color="warn" formnovalidate>Nazad</button></a></span>
+                    <span class="buttons" id="confirm"><button mat-raised-button (click)="editAdventure()" color="primary">Izmeni</button></span>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

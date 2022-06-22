@@ -1,0 +1,45 @@
+<mat-form-field appearance="fill">
+    <mat-label>Sort by</mat-label>
+    <mat-select [formControl]="sort">
+        <mat-option value="name-asc">Name Ascending</mat-option>
+        <mat-option value="name-desc">Name Descending</mat-option>
+        <mat-option value="location-asc">Location Ascending</mat-option>
+        <mat-option value="location-desc">Location Descending</mat-option>
+        <mat-option value="rating-asc">Rating Ascending</mat-option>
+        <mat-option value="rating-desc">Rating Descending</mat-option>
+        <mat-option value="price-asc">Price Ascending</mat-option>
+        <mat-option value="price-desc">Price Descending</mat-option>
+    </mat-select>
+</mat-form-field>
+    <button mat-raised-button color="primary" class="search-button" (click)="openSearchDialog()">Reservation Search</button>
+    <button mat-raised-button color="warn" class="search-button" [disabled]="search===false" (click)="resetSearch()">Reset Search</button>
+<mat-card class="main-entity-card" style="overflow-y: hidden" *ngFor="let item of pageSlice" (click)="redirectToEntity(item.id)">
+    <mat-card-title-group>
+        <mat-card-title>{{item.name}}</mat-card-title>
+        <mat-card-subtitle>{{getSummarizedDescription(item.description)}}</mat-card-subtitle>
+        <img class="main-entity-image" src="../../../../../assets/images/cottages/c1.jpg" *ngIf="mode==='cottage'">
+        <img class="main-entity-image" src="../../../../../assets/images/boats/b1.jpg" *ngIf="mode==='boat'">
+        <img class="main-entity-image" src="../../../../../assets/images/adventures/a1.jpg" *ngIf="mode==='adventure'">
+        
+    </mat-card-title-group>
+    <mat-card-actions style="text-align: center">
+        <p class="bottom-text" style="margin-bottom: 5px !important">Rating: {{item.rating}}/5</p>
+        <p class="bottom-text" *ngIf="mode !== 'adventure'">Owner: {{item.ownerName}}</p>
+        <p class="bottom-text" *ngIf="mode === 'adventure'">Instructor: {{item.ownerName}}</p>
+        <p class="bottom-text">Address: {{item.address}}</p>
+        <p class="bottom-text">Price: {{item.price | currency:'USD'}}</p>
+    </mat-card-actions>
+</mat-card>
+<div *ngIf="totalItems === 0">
+    <app-no-entities-found></app-no-entities-found>
+</div>
+
+<div class="footer">
+    <mat-paginator #paginator [length]="totalItems"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="pageSizeOptions"
+                   (page)="onPageChange($event)"
+                   >
+    
+    </mat-paginator>
+</div>

@@ -1,0 +1,21 @@
+.delete{
+    justify-self: end;
+    color: rgb(131, 1, 1);
+    transition: 0.3s;
+}
+
+.delete:hover{
+    cursor: pointer;
+    color: red;
+}
+
+.btn-edit-freePeriods{
+    position: absolute;
+    left: 40%;
+    transform: translateX(-50%);
+}
+.btn-edit-actions{
+    position: absolute;
+    left: 60%;
+    transform: translateX(-50%);
+}

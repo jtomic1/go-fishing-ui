@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-white mb-5">
+                
+                <div class="card-body" style="overflow-y: scroll; height:600px;">
+                    <ul class="list-unstyled reservations-list" *ngIf="reservations != undefined && reservations.length > 0; else elseblock">
+                        <li class="position-relative booking reservation-card" *ngFor="let reservation of reservations">
+                            <app-reservation-card [reservation]="reservation" [ownerType]="ownerType" (newReservation)="addReservationDTO($event)"></app-reservation-card>
+                        </li>
+    
+                    </ul>
+                    <ng-template #elseblock>
+                        <h2>Još uvek ne postoje rezervacije... :(</h2>
+                    </ng-template>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+    </div>

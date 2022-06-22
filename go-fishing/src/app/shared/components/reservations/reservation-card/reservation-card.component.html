@@ -1,0 +1,44 @@
+<div class="media">
+    <div class="media-body">
+        <div class="mb-3 d-flex">
+            <span class="bg-light-blue mr-auto">{{reservation.id}}</span>
+        </div>
+        <div class="mb-3 d-flex" [ngSwitch]="reservation.reservationStatus">
+            <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Status:</span>
+            <span *ngSwitchCase="'ACTIVE'" class="bg-light-blue ml-auto">Aktivna</span>
+            <span *ngSwitchCase="'CANCELED'" class="bg-light-blue ml-auto">Otkazana</span>
+            <span *ngSwitchCase="'IN_PROCESS'" class="bg-light-blue ml-auto">U procesu</span>
+            <span *ngSwitchCase="'ENDED'" class="bg-light-blue ml-auto">Završena</span>
+            
+        </div>
+        <div class="mb-3 d-flex">
+            <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Ponuda:</span>
+            <span class="bg-light-blue ml-auto">{{reservation.offerId}}</span>
+        </div>
+        <div class="mb-3 d-flex">
+            <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Datum rezervacije:</span>
+            <span class="bg-light-blue ml-auto">{{reservation.getStartDateString()}} - {{reservation.getEndDateString()}}</span>
+        </div>
+        <div class="mb-3 d-flex">
+            <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Ukupna cena:</span>
+            <span class="bg-light-blue ml-auto">$ {{reservation.totalPrice}}</span>
+        </div>
+        <div class="mb-5 d-flex">
+            <span class="mr-2 d-block d-sm-inline-block mb-1 mb-sm-0">Klijent:</span>
+            <span class="bg-light-blue ml-auto" >
+                {{clientName}}
+            </span>
+        </div>
+        <div  [ngSwitch]="reservation.reservationStatus">
+            <div *ngSwitchCase="'ACTIVE'"  >
+                <div class="btn-gray" (click)="addNewReservation(reservation.offerId,reservation.clientId)">Dodaj novu rezervaciju</div>
+            </div>
+            <div *ngSwitchCase="'IN_PROCESS'" class="btn-gray" (click)="addNewReservation(reservation.offerId,reservation.clientId)" >
+                Dodaj novu rezervaciju
+            </div>
+            <div *ngSwitchCase="'ENDED'" class="btn-gray" (click)="sendReservationReport(reservation.id,reservation.clientId)">
+                Popuni izvestaj
+            </div>
+        </div>
+    </div>
+</div>

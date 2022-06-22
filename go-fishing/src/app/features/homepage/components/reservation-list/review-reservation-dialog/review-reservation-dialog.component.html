@@ -1,0 +1,40 @@
+<mat-card class="card">
+    <h1 *ngIf="mode === 'review'" class="title">Review Reservation</h1>
+    <h1 *ngIf="mode === 'complaint'" class="title">Reservation Complaint</h1>
+    <mat-card-content class="card-content">
+        <mat-divider></mat-divider>
+        <br>
+        <p>Here you can leave a {{mode}} for your reservation.</p>
+        <div *ngIf="mode === 'review'">
+            <form [formGroup]="form">
+                <!-- Rating -->
+                <h4>
+                    Select minimal rating:
+                </h4>
+            
+                <mat-slider thumbLabel step="0.5" min="0" max="5" formControlName="grade"
+                    style="margin-top: 20px; transform:scale(1.35); margin-left:25px; width: 175px;"></mat-slider>
+            
+                <!-- Min Price -->
+                <mat-form-field style="margin-top: 10px;">
+                    <textarea matInput formControlName="reviewText" placeholder="Leave review text..."
+                        style="max-height:200px"></textarea>
+                </mat-form-field>
+            </form>
+        </div>
+        <div *ngIf="mode === 'complaint'">
+            <form [formGroup]="complaintForm">          
+                <!-- Min Price -->
+                <mat-form-field style="margin-top: 10px;">
+                    <textarea matInput formControlName="complaintText" placeholder="Leave complaint text..."
+                        style="max-height:200px"></textarea>
+                </mat-form-field>
+            </form>
+        </div>
+    </mat-card-content>
+    <mat-card-actions style="text-align: center;">
+        <button mat-button style="color:GREEN" (click)="onReviewClick()" *ngIf="mode === 'review'">SEND REVIEW</button>
+        <button mat-button style="color:red" (click)="onComplainClick()" *ngIf=" mode === 'complaint'">SEND COMPLAINT</button>
+        <button mat-button (click)="onCancelClick()">CANCEL</button>
+    </mat-card-actions>
+</mat-card>

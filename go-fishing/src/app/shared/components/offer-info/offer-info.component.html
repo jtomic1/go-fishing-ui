@@ -1,0 +1,20 @@
+
+<div class="cottage-info" (click)="openProfile()" *ngIf="offer != undefined && offerType != 'N' ; else elseBlock">
+    <div class="media align-items-lg-center flex-column flex-lg-row p-3" style="width: 80vw;">
+        <div class="media-body order-2 order-lg-1">
+        <h5 class="mt-0 font-weight-bold mb-2">{{offer.name}}</h5>
+        <p class="font-italic text-muted mb-0 small">{{offer.description}}</p>
+        <div class="d-flex align-items-center justify-content-between mt-1">
+            <h6 class="font-weight-bold my-2">{{offer.price}} $</h6>
+            
+        </div>
+        </div>
+        <img *ngIf="offerType=='C'" src="../../../../assets/images/cottages/c1.jpg" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+        <img *ngIf="offerType=='B'" src="../../../../assets/images/boats/b1.jpg" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+        <img *ngIf="offerType=='I'" src="../../../../assets/images/adventures/a1.jpg" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+    
+    </div>
+</div>
+<ng-template #elseBlock>
+    <h2>Nepostojeca ponuda.</h2>
+</ng-template>

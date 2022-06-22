@@ -1,0 +1,52 @@
+
+<div *ngIf="deletionRequests.length === 0">
+    <mat-card>
+        <mat-card-title>Nema zahteva za brisanje profila</mat-card-title>
+    </mat-card>
+    <button style="float: right; margin-right: 350px;" mat-raised-button color="warn" routerLink="/adminProfile/{{adminId}}" routerLinkActive="active">Nazad</button>
+</div>
+<div *ngIf="deletionRequests.length !== 0">
+    <div class="main-div">
+            <mat-card class="main-entity-card" style="overflow-y: hidden" *ngFor="let r of deletionRequests; index as i">
+                    <mat-card-title>Zahtev za brisanje naloga</mat-card-title>
+                    <div class="data">
+                        <b>Zahtev podnosi: </b>{{r.name + " " + r.lastName}}
+                        <br>
+                        <b>Razlog: </b>{{r.deletionReason}}
+                        <br>
+                        <br>
+                    </div>
+                    <mat-card-actions style="text-align: center">
+                        <span><button mat-raised-button (click)="RequestBeingRefused(r.userId)" data-toggle="modal" data-target="#exampleModalCenter" color="warn">Odbij</button><button mat-raised-button (click)="AcceptRequest(r.userId)" class="success">Prihvati</button></span>
+                    </mat-card-actions>
+            </mat-card>
+        <br>
+        <button style="float: right; margin-right: 350px;" mat-raised-button color="warn" routerLink="/adminProfile/{{adminId}}" routerLinkActive="active">Nazad</button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLongTitle">Razlog odbijanja</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <mat-form-field class="example-full-width" appearance="fill" style="width: 100%;">
+                        <mat-label>Razlog</mat-label>
+                        <textarea id="reason" matInput placeholder="Razlog..."></textarea>
+                    </mat-form-field>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Nazad</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="RefuseRequest()" >Pošalji</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+

@@ -1,0 +1,23 @@
+<div class="content">
+    <mat-card>
+        <h1 class="title">Loyalty program</h1>
+        <br>
+        <div style="text-align: center; display: flex; align-items: center; justify-content: center;" *ngFor="let l of loyalties">
+            <mat-card class="main-entity-card">
+                <mat-card-title style="text-align: center;">{{l.rankName}}</mat-card-title>
+                    <div class="data">
+                        <div><p><b>Opseg poena: </b>{{l.minPoints}} - {{l.maxPoints}}</p></div>
+                        <div><p><b>Procenat popusta: </b>{{1 - l.discountRate |percent}}</p></div>                    
+                        <div><p><b>Broj poena nakon rezervacije: </b>{{l.pointsPerReservation}}</p></div>            
+                    </div>                
+                    <mat-card-actions style="text-align: center">
+                        <span><button mat-raised-button (click)="editLoyaltyDialog(l.id, l.rankName, l.minPoints, l.maxPoints, l.discountRate, l.pointsPerReservation)" color="primary">Izmeni</button></span>
+                    </mat-card-actions>
+            </mat-card>
+        </div>        
+        <div style="display: flex; justify-content: center; align-items: center;" class="back">
+            <button style="margin-right: 2px;" mat-raised-button class="success" (click)="addLoyaltyDialog()">Dodaj</button>
+            <button style="margin-left: 2px;" mat-raised-button color="warn" routerLink="/adminProfile/{{adminId}}" routerLinkActive="active">Nazad</button>
+        </div>         
+    </mat-card>
+</div>

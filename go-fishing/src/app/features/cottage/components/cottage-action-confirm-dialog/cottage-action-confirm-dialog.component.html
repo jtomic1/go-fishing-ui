@@ -1,0 +1,17 @@
+<mat-card class="card">
+    <h1 class="title">Action Confirmation</h1>
+    <mat-card-content class="card-content">
+        <mat-divider></mat-divider>
+        <br>
+        <p>{{data.mode}}: <b>{{data.name}}</b></p>
+        <p>Dates: <b>{{data.startDate}} - {{data.endDate}}</b></p>
+        <br>
+        <p style="margin-top:5px; font-size: 20px;">Total price: <b>{{data.totalPrice | currency:'USD'}}</b></p>
+        <mat-divider></mat-divider>
+        <br>
+    </mat-card-content>
+    <mat-card-actions style="text-align: center;">
+        <button mat-button style="color:green" (click)="onConfirmClick()">CONFIRM</button>
+        <button mat-button (click)="onCancelClick()">CANCEL</button>
+    </mat-card-actions>
+</mat-card>

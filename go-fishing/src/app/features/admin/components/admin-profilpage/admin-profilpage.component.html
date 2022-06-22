@@ -1,0 +1,120 @@
+<div *ngIf="isFirstLogin === false">
+    <mat-sidenav-container class="example-container">
+        <mat-sidenav mode="side" opened>
+            <mat-card class="sidebar-card mat-elevation-z4">
+                <button mat-raised-button class="sidebar-item" routerLink="/adminProfile/{{adminId}}" routerLinkActive="active">
+                    <mat-icon>person</mat-icon>
+                    Profil
+                </button>
+                <button mat-raised-button class="sidebar-item" routerLink="/registrationRequests/{{adminId}}" routerLinkActive="active">
+                    <mat-icon>person_add</mat-icon>
+                    Zahtevi za registraciju
+                </button>
+                <button mat-raised-button class="sidebar-item" routerLink="/deletionRequests/{{adminId}}" routerLinkActive="active">
+                    <mat-icon>delete_forever</mat-icon>
+                    Zahtevi za brisanje profila
+                </button>
+                <button mat-raised-button class="sidebar-item" [disabled]="isSysAdmin" routerLink="/addAdmin/{{adminId}}" routerLinkActive="active">
+                    <mat-icon>add</mat-icon>
+                    Dodavanje administratora
+                </button>
+                <button mat-raised-button class="sidebar-item" routerLink="/entityOverview/{{adminId}}" routerLinkActive="active">
+                    <mat-icon>library_books</mat-icon>
+                    Pregled svih entiteta
+                </button>
+                <button mat-raised-button class="sidebar-item" routerLink="/reviews/{{adminId}}" routerLinkActive="active">
+                    <mat-icon>ballot</mat-icon>
+                    Pregled revizija
+                </button>
+                <button mat-raised-button class="sidebar-item" routerLink="/complaints/{{adminId}}" routerLinkActive="active">
+                    <mat-icon>ballot</mat-icon>
+                    Pregled žalbi
+                </button>
+                <button mat-raised-button class="sidebar-item" routerLink="/loyaltyProgram/{{adminId}}" roterLinkActive="active">
+                    <mat-icon>star</mat-icon>
+                    Loyalty program
+                </button>
+                <button mat-raised-button class="sidebar-item" routerLink="/adminReport/{{adminId}}" routerLinkActive="active">
+                    <mat-icon> attach_money</mat-icon>
+                    Izveštaji
+                </button>
+            </mat-card>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <div class="main-div">
+                <mat-card class="profile-card" style="margin-right: 50px">
+                    <h1 class="title">Osnovni podaci</h1>
+                    <mat-card-content class="reg-card">
+                        <form [formGroup]="form">
+            
+                            <!-- E-mail (non-editable) -->
+                            <mat-form-field>
+                                <input matInput formControlName="email" name="email" placeholder="E-mail">
+                            </mat-form-field>
+            
+                            <!-- Name -->
+                            <mat-form-field>
+                                <input matInput formControlName="name" placeholder="Name" name="name">
+                            </mat-form-field>
+                            
+                            <!-- Surname -->
+                            <mat-form-field>
+                                <input matInput formControlName="lastName" placeholder="Surname" name="lastName">
+                            </mat-form-field>
+                            
+                            <!-- Country -->
+                            <mat-form-field>
+                                <input matInput formControlName="country" placeholder="Country" name="country">
+                            </mat-form-field>
+                            
+                            <!-- City/Town -->
+                            <mat-form-field>
+                                <input matInput formControlName="city" placeholder="City/Town" name="town">
+                            </mat-form-field>
+                            
+                            <!-- Address -->
+                            <mat-form-field>
+                                <input matInput formControlName="street" placeholder="Address" name="address">
+                            </mat-form-field>
+                            
+                            <!-- Phone Number -->
+                            <mat-form-field>
+                                <input matInput formControlName="phone" placeholder="Phone Number" name="phoneNumber">
+                            </mat-form-field>
+            
+                        </form>
+                    </mat-card-content>
+                    <mat-card-actions style="text-align: center;">
+                        <button mat-raised-button color="primary" (click)="UpdateAdminData()" [disabled]="updateButtonDisabled">Izmeni</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+            
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
+<div *ngIf="isFirstLogin === true">
+    <div class="main-div">
+        <mat-card class="profile-card" style="margin-right: 50px">
+            <h1 class="title">Postavite svoju lozinku</h1>
+            <mat-card-content class="reg-card">
+                <form [formGroup]="passwordForm">
+                    
+                    <!-- Password -->
+                    <mat-form-field>
+                        <input matInput type="password" placeholder="Lozinka" formControlName="password" name="password" required>
+                    </mat-form-field>
+
+                    <!-- Confirm Password -->
+                    <mat-form-field>
+                        <input matInput type="password" placeholder="Potvrdi lozinku" formControlName="confirmPassword" name="confirmPassword" required>                    
+                    </mat-form-field>
+    
+                </form>
+            </mat-card-content>
+            <mat-card-actions style="text-align: center;">
+                <button mat-raised-button color="primary" (click)="setPassword()">Potvrdi</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

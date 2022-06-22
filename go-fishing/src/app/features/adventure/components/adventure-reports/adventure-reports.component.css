@@ -1,0 +1,34 @@
+app-chart {
+    margin-top: 20px;
+    margin-left: 25px;
+}
+
+.chart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pie-chart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.datepicker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.show-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+app-chart-pie {
+    transform: scale(1.15);
+}

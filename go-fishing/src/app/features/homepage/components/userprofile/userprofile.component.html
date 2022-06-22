@@ -1,0 +1,63 @@
+<div class="main-div">
+    <mat-card class="profile-card" style="margin-right: 50px">
+        <h1 class="title">User Profile</h1>
+        <mat-card-content class="reg-card">
+            <form [formGroup]="form">
+
+                <!-- E-mail (non-editable) -->
+                <mat-form-field>
+                    <input matInput formControlName="email" name="email" placeholder="E-mail">
+                </mat-form-field>
+
+                <!-- Name -->
+                <mat-form-field>
+                    <input matInput formControlName="name" placeholder="Name" name="name">
+                </mat-form-field>
+                
+                <!-- Surname -->
+                <mat-form-field>
+                    <input matInput formControlName="lastName" placeholder="Surname" name="lastName">
+                </mat-form-field>
+                
+                <!-- Country -->
+                <mat-form-field>
+                    <input matInput formControlName="country" placeholder="Country" name="country">
+                </mat-form-field>
+                
+                <!-- City/Town -->
+                <mat-form-field>
+                    <input matInput formControlName="town" placeholder="City/Town" name="town">
+                </mat-form-field>
+                
+                <!-- Address -->
+                <mat-form-field>
+                    <input matInput formControlName="address" placeholder="Address" name="address">
+                </mat-form-field>
+                
+                <!-- Phone Number -->
+                <mat-form-field>
+                    <input matInput formControlName="phoneNumber" placeholder="Phone Number" name="phoneNumber">
+                </mat-form-field>
+
+            </form>
+        </mat-card-content>
+        <mat-card-actions style="text-align: center;">
+            <button mat-button (click)="updateProfileInfo()" [disabled]="updateButtonDisabled">UPDATE PROFILE</button>
+            <button mat-button (click)="changePasswordDialog()">CHANGE PASSWORD</button>
+            <button mat-button (click)="deletionRequestDialog()"style="color:red">SEND DELETION REQUEST</button>
+        </mat-card-actions>
+    </mat-card>
+    <mat-card class="profile-card">
+        <h1 class="title">Loyalty Status</h1>
+        <mat-card-content class="reg-card">
+            <!-- <img [src]='loyaltyBadge' alt="loyalty-badge"  class="loyalty-badge"> -->
+            <h3>Current loyalty points: {{loyalty.loyaltyPoints}}</h3>
+            <h3>Current loyalty rank: {{loyalty.currentRank}}</h3>
+            <h3 *ngIf="penaltyCount !== -1">Current penalty count: <span style="color:red">{{penaltyCount}}</span></h3>
+            <h4 style="color:gray" *ngIf="penaltyCount >= 3">Your reservation privileges have been suspended!</h4>
+        </mat-card-content>
+        <mat-card-actions style="text-align: center;">
+            <button mat-button (click)="loyaltyDialog()">ABOUT LOYALTY PROGRAM</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

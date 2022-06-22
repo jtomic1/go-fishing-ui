@@ -1,0 +1,95 @@
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="form">
+            <h2>Register</h2>
+            
+            <!-- E-mail -->
+            <mat-form-field>
+                <input matInput formControlName="email" placeholder="E-mail" name="username" required>
+            </mat-form-field>
+            <small class="text-danger" *ngIf="form.get('email')!.hasError('pattern')">
+                Invalid E-mail format
+            </small>
+
+            <!-- Password -->
+            <mat-form-field>
+                <input matInput formControlName="password" type="password" placeholder="Password" name="password" required>
+            </mat-form-field>
+            <small class="text-danger" *ngIf="form.get('password')!.hasError('minlength')">
+                Password must be at least 8 characters long
+            </small>
+            <small class="text-danger" *ngIf="form.get('password')!.hasError('maxlength')">
+                Password must be less than 30 characters long
+            </small>
+
+            <!-- Confirm Password -->
+            <mat-form-field>
+                <input matInput formControlName="confirmPassword" type="password" placeholder="Confirm Password" name="confirmPassword" required>
+            </mat-form-field>
+            <small class="text-danger" *ngIf="activatePassMatchError">
+                Passwords do not match
+            </small>
+
+            <!-- Name -->
+            <mat-form-field>
+                <input matInput formControlName="name" placeholder="Name" name="name" required>
+            </mat-form-field>
+
+            <!-- Surname -->
+            <mat-form-field>
+                <input matInput formControlName="lastName" placeholder="Surname" name="lastName" required>
+            </mat-form-field>
+
+            <!-- Country -->
+            <mat-form-field>
+                <input matInput formControlName="country" placeholder="Country" name="country" required>
+            </mat-form-field>
+
+            <!-- City/Town -->
+            <mat-form-field>
+                <input matInput formControlName="town" placeholder="City/Town" name="town" required>
+            </mat-form-field>
+
+            <!-- Address -->
+            <mat-form-field>
+                <input matInput formControlName="address" placeholder="Address" name="address" required>
+            </mat-form-field>
+            
+            <!-- Phone Number -->
+            <mat-form-field>
+                <input matInput formControlName="phoneNumber" placeholder="Phone Number" name="phoneNumber" required>
+            </mat-form-field>
+            <small class="text-danger" *ngIf="form.get('phoneNumber')!.hasError('pattern')">
+                Phone number format should be '+' followed by 10-12 digits inclusive
+            </small>
+
+            <!-- Role -->
+            <label id="role-radio-group">Please select your role: </label>
+            <mat-radio-group class="role-radio-group" formControlName="role">
+                <mat-radio-button class="role-radio-button" value="ROLE_USER">
+                    Client
+                </mat-radio-button>
+                <mat-radio-button class="role-radio-button" value="ROLE_COTTAGE_OWNER">
+                    Cottage Owner
+                </mat-radio-button>
+                <mat-radio-button class="role-radio-button" value="ROLE_BOAT_OWNER">
+                    Boat Owner
+                </mat-radio-button>
+                <mat-radio-button class="role-radio-button" value="ROLE_INSTRUCTOR">
+                    Adventure Instructor
+                </mat-radio-button>
+            </mat-radio-group>
+            
+            <mat-form-field *ngIf="showRegistrationReason">
+                <mat-label>Leave an explanation</mat-label>
+                <textarea matInput formControlName="reason" class="reason-textarea"></textarea>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" type="button" (click)="saveRequest()">Register</button>
+            <h3 class="top-spacing">Already have an account? <a routerLink="/login" routerLinkActive="active">Log In!</a></h3>
+
+            <!-- <pre>{{form.value | json}}</pre> -->
+        </form>
+    </mat-card-content>
+</mat-card>
+

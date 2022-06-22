@@ -1,0 +1,15 @@
+.margin10{
+    margin: 10px 15px;
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+
+.charts{
+    margin-top: 100px;
+}

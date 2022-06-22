@@ -1,0 +1,109 @@
+<mat-card>
+    <mat-card-content>
+        <form>
+            <h2>Izmena podataka</h2>
+
+            <!-- Name -->
+            <mat-form-field (click)="nameError=false">
+                <input matInput placeholder="Ime" name="name" [(ngModel)]="instructor.name">
+                <div class="text-danger" *ngIf="nameError">
+                    Ovo polje je obavezno!
+                </div>
+            </mat-form-field>
+
+            <!-- Surname -->
+            <mat-form-field (click)="surnameError=false">
+                <input matInput placeholder="Prezime" name="surname" [(ngModel)]="instructor.lastName">
+                <div class="text-danger" *ngIf="surnameError">
+                    Ovo polje je obavezno!
+                </div>
+            </mat-form-field>
+
+            <!-- Phone Number -->
+            <mat-form-field (click)="phoneError=false">
+                <input matInput placeholder="Broj telefona" name="phoneNumber" [(ngModel)]="instructor.phone">
+                <div class="text-danger" *ngIf="phoneError">
+                    Broj telefona se sastoji od 10-12 brojeva!
+                </div>
+            </mat-form-field>
+            <br />
+
+            <!-- Address -->
+            <mat-form-field (click)="streetError=false">
+                <input matInput placeholder="Ulica" name="street" [(ngModel)]="instructor.street">
+                <div class="text-danger" *ngIf="streetError">
+                    Ovo polje je obavezno!
+                </div>
+            </mat-form-field>
+
+            <!-- City/Town -->
+            <mat-form-field (click)="cityError=false">
+                <input matInput placeholder="Grad" name="cityTown" [(ngModel)]="instructor.city">
+                <div class="text-danger" *ngIf="cityError">
+                    Ovo polje je obavezno!
+                </div>
+            </mat-form-field>
+
+            <!-- Country -->
+            <mat-form-field (click)="countryError=false">
+                <input matInput placeholder="Država" name="country" [(ngModel)]="instructor.country">
+                <div class="text-danger" *ngIf="countryError">
+                    Ovo polje je obavezno!
+                </div>
+            </mat-form-field>
+
+            <div class="full" id="map" async>
+
+            </div>
+            <br/>
+            
+            <!-- Button trigger modal -->
+            <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                Promeni lozinku
+            </button>-->
+            <button mat-raised-button style="width: 150px;" data-toggle="modal" data-target="#exampleModalCenter">Promeni lozinku</button>
+  
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title text-center" id="exampleModalLongTitle">Promena lozinke</h2>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Password -->
+                            <mat-form-field (click)="passwordError=false">
+                                <input matInput type="password" placeholder="Nova lozinka" name="password" [(ngModel)]="password">
+                                <div class="text-danger" *ngIf="passwordError">
+                                    Broj karaktera mora biti veći od 8 i manji od 30!
+                                </div>
+                            </mat-form-field>
+
+                            <!-- Confirm Password -->
+                            <mat-form-field (click)="confirmPasswordError=false">
+                                <input matInput type="password" placeholder="Potvrdi lozinku" name="confirmPassword" [(ngModel)]="confirmPassword">
+                                <div class="text-danger" *ngIf="confirmPasswordError">
+                                    Lozinke se ne poklapaju!
+                                </div>
+                            </mat-form-field>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Nazad</button>
+                            <button type="button" class="btn btn-primary" (click)="ChangePassword()">Izmeni</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <a routerLink="/instructorProfile/{{instructor.id}}" routerLinkActive="active"><button mat-raised-button class="" color="warn" type="button">Nazad</button></a>
+                <button mat-raised-button color="primary" type="button" (click)="UpdateData()">Izmeni</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
+
+

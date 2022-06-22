@@ -1,0 +1,15 @@
+.right-align {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.left-spacing{
+    margin-left: 5px;
+}
+
+mat-toolbar{
+    margin-bottom: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}

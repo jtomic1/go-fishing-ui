@@ -1,0 +1,18 @@
+<mat-card class="card">
+    <h1 class="title">Send Deletion Request</h1>
+    <p>If you wish to send a deletion request for your account, you should enter a reason for deletion.</p>
+    <p>Administrator approval is required. You will get an e-mail notification as soon as one of our administrators reviews
+        and processes your request.</p>
+    <p style="font-weight: bold;">Please consider your request carefully!</p>
+    <form [formGroup]="data">
+        <!-- New Password -->
+        <mat-form-field style="margin-top: 30px">
+            <textarea matInput formControlName="newPassword" placeholder="Enter your reasoning here..."
+                name="deletionReason" formControlName="deletionReason" name="deletionReason"></textarea>
+        </mat-form-field>
+    </form>
+    <mat-card-actions style="text-align: center;">
+        <button mat-button style="color: red;" (click)="onSendRequest()">SEND REQUEST</button>
+        <button mat-button (click)="onCancelClick()">CANCEL</button>
+    </mat-card-actions>
+</mat-card>

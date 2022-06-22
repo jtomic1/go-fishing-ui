@@ -1,0 +1,22 @@
+.card {
+    max-width: 400px;
+    max-height: 100%;
+}
+
+.title {
+    font-size: 1.5em;
+    display: block;
+    font-weight: bold;
+    text-align: center;
+}
+
+p {
+    display: block;
+    text-align: center;
+}
+
+.outline{
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: black;
+    font-size: larger;
+}

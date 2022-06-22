@@ -1,0 +1,38 @@
+mat-card {
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+}
+
+mat-form-field {
+    display: block;
+}
+
+.left-spacing {
+    margin-left: 5px;
+}
+
+.top-spacing {
+    margin-top: 15px;
+}
+
+.text-danger{
+    color: red;
+    margin-bottom: 5px;
+}
+
+.role-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    align-items: flex-start;
+}
+
+.role-radio-button {
+    margin: 5px;
+}
+
+.reason-textarea{
+    max-height: 100px;
+    min-height: 30px;
+}

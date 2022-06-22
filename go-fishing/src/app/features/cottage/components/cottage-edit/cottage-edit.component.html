@@ -1,0 +1,58 @@
+<div class="container-fluid mt-2 mb-3">
+    <div class="row no-gutters">
+        <div class="col-md-5 pr-2">
+            <div class="card">
+                <div class="demo">
+                    <ul class="lightSlider add-new-img">
+                        <li data-thumb="https://i.imgur.com/KZpuufK.jpg">
+                            <i class="material-icons" style="font-size: 14em;">add_photo_alternate</i>
+                        </li>
+                    
+                    </ul>
+                    
+                    <div class="card mt-2" style="padding: 1px; margin-left: -5px; padding-right: 5px; border: 0px;"> 
+                        <div class="similar-products mt-2 d-flex flex-row">
+                            <div class="card  p-1" style="width: 9rem;margin-right: 3px; border: 0px;">
+                                <i class="fa fa-file-plus"></i> 
+                                <div class="card-body">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+        <div class="col-md-7">
+            <div class="card grid-2col-30-70 " style="border: 0px;">
+                <h1 class="font  font-weight-bold"> Naziv:</h1>
+                <input type="text" name="cottageName" [(ngModel)]="name" [value]="currentCottage.name">
+                    
+                <h2 class="font-weight-bold"> <span class="text-muted">Cena po danu:</span></h2>
+                <input type="number" min="0" [(ngModel)]="price" min="1">
+                
+                <span class="font-weight-bold">Kapcitet ljudi:</span><input type="number" [(ngModel)]="capacity" min="1">
+                    
+                <span class="font-weight-bold">Broj soba:</span> <input type="number" [(ngModel)]="roomCount" min="1">
+                <span class="font-weight-bold">Broj kreveta:</span><input type="number" [(ngModel)]="bedCount" min="1">
+                <span class="font-weight-bold">Opis:</span>
+                        <textarea type="text" rows="10" cols="40" [(ngModel)]="promoDescription"></textarea>
+                            
+                            <span class="font-weight-bold">Dodatne usluge:</span>
+                        <div class="bullets">
+                            <div class="d-flex align-items-center"> <span class="dot"></span> <input type="checkbox"> <span class="bullet-text">Wi-fi</span> </div>
+                            <div class="d-flex align-items-center"> <span class="dot"></span> <input type="checkbox">  <span class="bullet-text">Spa</span> </div>
+                            <div class="d-flex align-items-center"> <span class="dot"></span>  <input type="checkbox"> <span class="bullet-text">Đakuzi</span> </div>
+                            <div class="d-flex align-items-center"> <span class="dot"></span> <input type="checkbox">  <span class="bullet-text">Bazen</span> </div>
+                            <div class="d-flex align-items-center"> <span class="dot"></span> <input type="checkbox">  <span class="bullet-text">TV</span> </div>
+                            <div class="d-flex align-items-center"> <span class="dot"></span> <input type="checkbox">  <span class="bullet-text">Klima</span> </div>
+                        </div>
+                    
+            </div>            
+            <div class="buttons">
+                <button class="btn btn-outline-warning btn-long cart" (click)="editCottage()">Izmeni vikendicu</button>
+            <hr>
+            </div>
+        </div>
+    </div>
+</div>

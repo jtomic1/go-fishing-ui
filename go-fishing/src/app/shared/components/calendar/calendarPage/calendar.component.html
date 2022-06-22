@@ -1,0 +1,43 @@
+<app-offer-info [offerId]="offerId"></app-offer-info>
+<h2>Kalendar dostupnsoti
+</h2>
+<div *ngIf="ownerLoggedIn">
+<button  mat-raised-button color="primary" class="btn-edit-freePeriods" (click)="editPeriodsClick()"><i class="material-icons">edit</i>Izmeni slobodne periode</button>
+<button  mat-raised-button color="primary" class="btn-edit-actions" (click)="editActionsClick()"><i class="material-icons">edit</i>Izmeni akcije</button>
+
+<div *ngIf="editPeriods" style="padding: 50px;">
+    Trenutni periodi kada je vikendica slobodna: 
+    <div *ngFor="let freePeriod of freePeriods" style="display: flex;justify-content:center;">
+
+        <span style="padding-right:15px;">{{freePeriod.startDate.day}}.{{freePeriod.startDate.month}}.{{freePeriod.startDate.year}}</span> - 
+        <span style="padding-left:15px;">{{freePeriod.endDate.day}}.{{freePeriod.endDate.month}}.{{freePeriod.endDate.year}}</span>
+        <span class="delete"><i class="material-icons" (click)="deletePeriod(freePeriod.id)">delete</i></span>
+    </div>
+    <div>
+      Dodaj novi period dostupnosti:  <app-new-free-period [_pData]="getParentMethod()"></app-new-free-period>
+    </div>
+</div>
+
+
+<div *ngIf="editActions" style="padding: 50px;">
+    Trenutne akcije: 
+    <div *ngFor="let action of actions" style="display: flex;justify-content:center;">
+
+        <span style="padding-right:15px;">{{action.startDate.day}}.{{action.startDate.month}}.{{action.startDate.year}}</span> - 
+        <span style="padding-left:15px;">{{action.endDate.day}}.{{action.endDate.month}}.{{action.endDate.year}}</span>
+        <span class="delete"><i class="material-icons" (click)="deleteAction(action.id)">delete</i></span>
+    </div>
+    <div>
+      Dodaj novu akciju:  <app-new-action [_pData]="getParentMethod()"></app-new-action>
+    </div>
+</div>
+</div>
+
+<div style="padding: 50px;">
+    <mwl-demo-component [freePeriods]="freePeriods" [actions]="actions" [reservations]="reservations" 
+     *ngIf="freePeriods.length > 0 || actions.length > 0 || reservations.length > 0; else elseBlock;" >Loading...</mwl-demo-component>
+    
+    <ng-template #elseBlock>
+        <h2>Nazalost ova vikendica trenutno nema slobodnih termina.</h2>
+    </ng-template>
+</div>

@@ -1,0 +1,9 @@
+<div class="buttons">
+    <button mat-raised-button color="primary" class="margin10" (click)="displayCottagesBussy()">Zauzetost brodova</button>
+    <button mat-raised-button color="primary" class="margin10" (click)="displayCottagesIncome()">Prihodi od brodova</button>
+    <button mat-raised-button color="primary" class="margin10" (click)="displayCottagesGrades()">Prosecne ocene</button>
+</div>
+<div class="charts">
+    <app-chart [data]="dataForChar" [title]="title" [x_axis]="x_axis" [y_axis]="y_axis" *ngIf="displayChart"></app-chart>
+    <app-chart-pie id="chartPie" [data]="dataForChar" *ngIf="displayChartPie"></app-chart-pie>
+</div>

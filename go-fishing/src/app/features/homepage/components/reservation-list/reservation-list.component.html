@@ -1,0 +1,36 @@
+<mat-form-field appearance="fill">
+    <mat-label>Sort by</mat-label>
+    <mat-select [formControl]="sort">
+        <mat-option value="earliest">Earliest</mat-option>
+        <mat-option value="latest">Latest</mat-option>
+        <mat-option value="shortest">Shortest</mat-option>
+        <mat-option value="longest">Longest</mat-option>
+        <mat-option value="most-expensive">Most Expensive</mat-option>
+        <mat-option value="least-expensive">Least Expensive</mat-option>
+    </mat-select>
+</mat-form-field>
+<mat-card class="main-entity-card" style="overflow-y: auto; margin-bottom: 5px;" *ngFor="let item of reservationList">
+    <mat-card-title-group>
+        <mat-card-title style="text-align: center;">{{item.offerName}}</mat-card-title>
+    </mat-card-title-group>
+    <mat-card-actions>
+        <mat-card-subtitle>Date: <b>{{getDateString(item.startDate)}} - {{getDateString(item.endDate)}}</b></mat-card-subtitle>
+        <mat-card-subtitle>Location: <b>{{item.offerAddress}}</b></mat-card-subtitle>
+        <mat-card-subtitle>Total Cost: <b>{{item.totalPrice | currency:'USD'}}</b></mat-card-subtitle>
+        <div *ngIf="mode === 'active'">
+            <button mat-button style="color:red" *ngIf="item.canCancel" (click)="openCancelDialog(item)">CANCEL RESERVATION</button>
+            <button mat-button style="color: gray" *ngIf="!item.canCancel" disabled>THIS RESERVATON IS NOT CANCELLABLE</button>
+        </div>
+        <div *ngIf="mode === 'past'">
+            <button mat-button style="color:green" *ngIf="item.canCancel" (click)="openReviewDialog(item)">LEAVE A REVIEW</button>
+            <button mat-button style="color: gray" *ngIf="!item.canCancel" disabled>ALREADY REVIEWED</button>
+
+            <button mat-button style="color:red" *ngIf="item.canComplain" (click)="openComplaintDialog(item)">SEND A COMPLAINT</button>
+            <button mat-button style="color: gray" *ngIf="!item.canComplain" disabled>COMPLAINT ALREADY SENT</button>
+        </div>
+    </mat-card-actions>
+</mat-card>
+
+<div *ngIf="totalItems === 0">
+    <app-no-entities-found></app-no-entities-found>
+</div>

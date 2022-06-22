@@ -1,0 +1,19 @@
+mat-card{
+    width: 70%;
+    height: 200 px;
+    max-height: 250px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 260px;
+}
+
+.main-entity-card{
+    margin-bottom: 10px;
+    transition: transform 0.2s;
+    max-height: 250px;
+}
+
+.main-entity-card:hover{
+    transform: scale(1.01);
+    cursor: pointer;
+}

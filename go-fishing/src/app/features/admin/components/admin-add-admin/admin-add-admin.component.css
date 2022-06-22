@@ -1,0 +1,30 @@
+mat-card {
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+}
+
+mat-form-field {
+    display: block;
+}
+
+.left-spacing {
+    margin-left: 5px;
+}
+
+.top-spacing {
+    margin-top: 15px;
+}
+
+.text-danger{
+    color: red;
+    margin-bottom: 5px;
+}
+
+.buttons {
+    margin-top: 8px;
+}
+
+.buttons button {
+    margin-left: 10px;
+}

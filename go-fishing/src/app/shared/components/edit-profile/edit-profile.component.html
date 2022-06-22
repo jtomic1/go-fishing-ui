@@ -1,0 +1,54 @@
+<a routerLink="/cottageOwner/1" routerLinkActive="true">Nazad na profil</a>
+<mat-card>
+    <mat-card-content>
+        <!--validacije-->
+        <form >
+            <h2>Izmeni podatke</h2>
+            
+            <!-- E-mail -->
+            <mat-form-field>
+                <input matInput formControlName="email" placeholder="E-mail" name="username" value="mladengajic00@gmail.com" required>
+            </mat-form-field>
+            <small class="text-danger" *ngIf="form.get('email')!.hasError('pattern')">
+                Invalid E-mail format
+            </small>
+
+            <!-- Name -->
+            <mat-form-field>
+                <input matInput formControlName="name" placeholder="Ime" name="name" value="Mladen" required>
+            </mat-form-field>
+
+            <!-- Surname -->
+            <mat-form-field>
+                <input matInput formControlName="surname" placeholder="Prezime" name="surname" value="Gajić" required>
+            </mat-form-field>
+
+            <!-- Country -->
+            <mat-form-field>
+                <input matInput formControlName="country" placeholder="Država" name="country" value="Srbija" required>
+            </mat-form-field>
+
+            <!-- City/Town -->
+            <mat-form-field>
+                <input matInput formControlName="cityTown" placeholder="Grad" name="cityTown" value="Mali Zvornik"required>
+            </mat-form-field>
+
+            <!-- Address -->
+            <mat-form-field>
+                <input matInput formControlName="address" placeholder="Adresa" name="address" value="Kralja Petra I br. 6"required>
+            </mat-form-field>
+            
+            <!-- Phone Number -->
+            <mat-form-field>
+                <input matInput formControlName="phoneNumber" placeholder="Broj mobilnog telefona" name="phoneNumber" value="+381 64 428 1080"required>
+            </mat-form-field>
+            <small class="text-danger" *ngIf="form.get('phoneNumber')!.hasError('pattern')">
+                Phone number format should be '+' followed by 8-10 digits inclusive
+            </small>
+
+            <button mat-raised-button color="primary" type="button" (click)="saveRequest()">Sačuvaj izmenjene podatke</button>
+           
+            <!-- <pre>{{form.value | json}}</pre> -->
+        </form>
+    </mat-card-content>
+</mat-card>

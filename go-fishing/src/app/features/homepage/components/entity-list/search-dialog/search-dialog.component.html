@@ -1,0 +1,59 @@
+<mat-card class="card">
+    <h1 class="title">Reservation Search</h1>
+    <mat-card-content class="card-content">
+        <form [formGroup]="data">
+
+            <!-- Date Range -->
+            <mat-form-field style="margin-top: 50px;">
+                <mat-label>Enter a date range</mat-label>
+                <mat-date-range-input [rangePicker]="picker" [min]="minDate">
+                    <input matStartDate formControlName="startDate" placeholder="Start date">
+                    <input matEndDate formControlName="endDate" placeholder="End date">
+                </mat-date-range-input>
+                <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+                
+                <mat-error *ngIf="data.controls.startDate.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                <mat-error *ngIf="data.controls.endDate.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+            </mat-form-field>
+
+            <!-- Name -->
+            <mat-form-field style="margin-top: 20px;">
+                <input type="text" matInput formControlName="name" placeholder="Name"
+                    name="name">
+            </mat-form-field>
+
+            <!-- Location -->
+            <mat-form-field style="margin-top: 10px;">
+                <input type="text" matInput formControlName="location" placeholder="Location" name="location">
+            </mat-form-field>
+
+            <!-- Rating -->
+            <h4>
+                Select minimal rating:
+            </h4>
+            
+            <mat-slider thumbLabel step="0.5" min="0" max="5" formControlName="minRating" style="margin-top: 20px; transform:scale(1.35); margin-left:25px; width: 175px;"></mat-slider>
+
+            <!-- Min Price -->
+            <mat-form-field style="margin-top: 10px;">
+                <input type="number" matInput formControlName="capacity" placeholder="Capacity" name="capacity" min="0">
+            </mat-form-field>
+
+            <!-- Min Price -->
+            <mat-form-field style="margin-top: 10px;">
+                <input type="number" matInput formControlName="minPrice" placeholder="Min Price" name="minPrice" min="0">
+            </mat-form-field>
+
+            <!-- Max Price -->
+            <mat-form-field style="margin-top: 10px;">
+                <input type="number" matInput formControlName="maxPrice" placeholder="Max Price" name="minPrice" min="0">
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+    <mat-card-actions style="text-align: center;">
+        <button mat-button (click)="onSearchClick()">SEARCH</button>
+        <button mat-button (click)="onCancelClick()">CANCEL</button>
+    </mat-card-actions>
+</mat-card>

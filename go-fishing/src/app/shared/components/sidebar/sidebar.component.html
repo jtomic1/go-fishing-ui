@@ -1,0 +1,41 @@
+<mat-sidenav-container class="example-container">
+    <mat-sidenav mode="side" opened>
+        <mat-card class="sidebar-card mat-elevation-z4">
+            <p>Welcome, {{userName}}</p>
+            <img class="profile-pic" alt="profile-pic" src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png">
+            <button mat-raised-button color="accent" class="sidebar-item" [routerLink]="['userProfile']" routerLinkActive="active">
+                <fa-icon class="fa-2x" [icon]="userProfileIcon"></fa-icon>
+                User Profile
+            </button>
+            <button mat-raised-button color="accent" class="sidebar-item" [routerLink]="['cottageList']" routerLinkActive="active">
+                <fa-icon class="fa-2x" [icon]="cottageIcon"></fa-icon>
+                Cottages
+            </button>
+            <button mat-raised-button color="accent" class="sidebar-item" [routerLink]="['boatList']" routerLinkActive="active">
+                <fa-icon class="fa-2x" [icon]="boatIcon"></fa-icon>
+                Boats
+            </button>
+            <button mat-raised-button color="accent" class="sidebar-item" [routerLink]="['adventureList']" routerLinkActive="active">
+                <fa-icon class="fa-2x" [icon]="instructorIcon"></fa-icon>
+                Instructors
+            </button>
+            <button mat-raised-button color="accent" class="sidebar-item" [routerLink]="['activeReservations']" routerLinkActive="active">
+                <fa-icon class="fa-2x" [icon]="activeReservationsIcon"></fa-icon>
+                Active Reservations
+            </button>
+            <button mat-raised-button color="accent" class="sidebar-item" [routerLink]="['pastReservations']" routerLinkActive="active">
+                <fa-icon class="fa-2x" [icon]="historyIcon"></fa-icon>
+                Reservation History
+            </button>
+            <button mat-raised-button color="accent" class="sidebar-item" [routerLink]="['subscriptions']" routerLinkActive="active-">
+                <fa-icon class="fa-2x" [icon]="subscriptionsIcon"></fa-icon>
+                Subscriptions
+            </button>
+        </mat-card>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-card class="main-content-card mat-elevation-z4">
+            <router-outlet></router-outlet>
+        </mat-card>
+    </mat-sidenav-content>
+</mat-sidenav-container>

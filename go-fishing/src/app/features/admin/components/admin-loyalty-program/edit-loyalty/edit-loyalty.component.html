@@ -1,0 +1,34 @@
+<h1 mat-dialog-title>Izmena loyalty programa</h1>
+<div mat-dialog-content>
+    <form [formGroup]="form">
+        <mat-form-field>
+            <mat-label>Ime nivoa</mat-label>
+            <input matInput formControlName="rankName" name="rankName" placeholder="Ime nivoa" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Minimalan broj poena</mat-label>
+            <input matInput type="number" formControlName="minPoints" name="minPoints" placeholder="Minimalan broj poena" required>
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-label>Maksimalan broj poena</mat-label>
+            <input matInput type="number" min="1" formControlName="maxPoints" name="maxPoints" placeholder="Maksimalan broj poena" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Procenat cene koja se naplaćuje (0.01 - 0.99)</mat-label>
+            <input matInput type="number" min="0" max="1" formControlName="discountRate" name="discountRate" placeholder="Procenat za naplaćivanje" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Broj poena po rezervaciji</mat-label>
+            <input matInput type="number" min="1" formControlName="pointsPerReservation" name="pointsPerReservation" placeholder="Broj poena po rezervaciji" required>
+        </mat-form-field>
+        
+    </form>
+</div>
+<div class="buttons" mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Nazad</button>
+  <button mat-raised-button (click)="edit()" color="primary">Izmeni</button>
+</div>

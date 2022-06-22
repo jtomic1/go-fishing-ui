@@ -1,0 +1,64 @@
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="form">
+            <h2>Dodavanje admina</h2>
+            
+            <!-- E-mail -->
+            <mat-form-field>
+                <input matInput formControlName="email" placeholder="E-mail" name="username" required>
+            </mat-form-field>
+
+            <!-- Name -->
+            <mat-form-field>
+                <input matInput formControlName="name" placeholder="Ime" name="name" required>
+            </mat-form-field>
+
+            <!-- Surname -->
+            <mat-form-field>
+                <input matInput formControlName="lastName" placeholder="Prezime" name="lastName" required>
+            </mat-form-field>
+
+            <!-- Address -->
+            <mat-form-field>
+                <input matInput formControlName="address" placeholder="Ulica i broj" name="address" required>
+            </mat-form-field>
+
+            <!-- City/Town -->
+            <mat-form-field>
+                <input matInput formControlName="town" placeholder="Grad" name="town" required>
+            </mat-form-field>
+
+            <!-- Country -->
+            <mat-form-field>
+                <input matInput formControlName="country" placeholder="Zemlja" name="country" required>
+            </mat-form-field>
+            
+            <!-- Phone Number Phone number format should be '+' followed by 10-12 digits inclusive -->
+            <mat-form-field>
+                <input matInput formControlName="phoneNumber" placeholder="Broj telefona" name="phoneNumber" required>
+            </mat-form-field>
+            <small class="text-danger" *ngIf="form.get('phoneNumber')!.hasError('pattern')">
+                Nevalidan format!
+            </small>
+
+            <!-- Password -->
+            <mat-form-field>
+                <input matInput formControlName="password" type="password" placeholder="Lozinka" name="password" required>
+            </mat-form-field>
+        
+            <!-- Confirm Password -->
+            <mat-form-field>
+                <input matInput formControlName="confirmPassword" type="password" placeholder="Potvrda lozinke" name="confirmPassword" required>
+            </mat-form-field>
+            
+            <div class="buttons">
+                <button mat-raised-button color="warn" type="button" routerLink="/adminProfile/{{adminId}}">Nazad</button>
+                <button mat-raised-button color="primary" type="button" (click)="addAdmin()">Dodaj</button>
+            </div>
+
+            <!-- <pre>{{form.value | json}}</pre> -->
+        </form>
+    </mat-card-content>
+</mat-card>
+
+

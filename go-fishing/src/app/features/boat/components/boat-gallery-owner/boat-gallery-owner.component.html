@@ -1,0 +1,62 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<div class="container" style="overflow-y: scroll; height:600px;">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-8 col-lg-6">
+      <div class="section_heading text-center wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+        <div class="line"></div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+         
+    <div *ngFor="let boat of boats" class="col-12 col-sm-6 col-lg-4">
+        <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+          
+          <a routerLink="/boatProfile/{{boat.id}}">
+            <div class="advisor_thumb">
+              <img src="https://i.postimg.cc/xXp3tbkh/meet-the-family2.jpg" alt=""> 
+            </div> 
+          </a>
+          <p class="cottage-location">
+            Lokacija , Grad <i class="material-icons">location_on</i>
+          </p>
+          <div class="single_advisor_details_info">
+            <h2>{{boat.name}}</h2>
+            <p class="designation">
+                {{boat.capacity}} <i class="material-icons">people</i>
+                <br />
+            </p>
+            <div style="display: flex;">
+              <a routerLink="/calendar/{{boat.id}}"><span class="material-icons">today</span></a>
+              <h6>Kalendar zauzetosti</h6>
+            </div>
+            <div>
+              <p class="owner-options-tag"></p>
+              <p class="owner-options" >
+                <a routerLink="/calendar/{{boat.id}}"><i class="material-icons">more_time</i> <h6>Dodaj slobodan termin</h6></a>
+                <a routerLink="/calendar/{{boat.id}}"><i class="material-icons">add_alert</i><h6>Dodaj akciju</h6></a>
+                <a routerLink="/editBoat/{{boat.id}}"><i class="material-icons">edit</i> <h6>Izmeni</h6></a>
+                <a routerLink="/boatOwner/{{ownerId}}" (click)="deleteBoat(boat.id)"><i class="material-icons">delete</i><h6>Ukloni</h6></a>
+              </p>
+            </div>
+          </div>
+        </div>
+    </div>
+          
+          <!-- Single Advisor-->
+    <div class="col-12 col-sm-6 col-lg-4">
+        
+      <a (click)="addNewBoat()">
+        <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+          <div class="advisor_thumb">
+            <i class="material-icons" style="color: whitesmoke; font-size: 7em;padding-bottom: 60px;">add_business</i>                <!-- Social Info-->
+          </div>
+          <div class="single_advisor_details_info">
+            <h2>Dodaj novi brod</h2>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

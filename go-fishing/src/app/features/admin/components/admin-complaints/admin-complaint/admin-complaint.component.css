@@ -1,0 +1,33 @@
+mat-card{
+    width: 70%;
+    height: 300px;
+    max-height: 300px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 260px;
+}
+
+.data {
+    margin-left: 20px;
+}
+
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    margin-left: 16%;
+    width: 84%;
+    color: white;
+}
+
+.main-entity-card{
+    margin-bottom: 10px;
+    transition: transform 0.2s;
+    height: 220px;
+    max-height: 300px;
+}
+
+.main-entity-card:hover{
+    transform: scale(1.01);
+    cursor: pointer;
+}

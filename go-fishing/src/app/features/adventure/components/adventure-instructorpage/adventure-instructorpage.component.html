@@ -1,0 +1,137 @@
+<div class="">
+    <div class="profile-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                   <div class="profile">
+                        <div class="display-f-center mt-3">
+                            <img src="https://i.imgur.com/LZ1Xa9r.jpeg" alt="Circle Image" class="img-raised rounded-circle  img-fluid" id="profileImage">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                  <div class="name">
+                    <h3 class="title display-f-center"></h3>
+                    <div class="details">
+                        <h5>Instruktor:</h5><h4>{{instructor.name + " " + instructor.lastName}}</h4>
+                        <h5>E-mail:</h5><h4>{{instructor.email}}</h4>
+                        <h5>Telefon:</h5><h4>{{instructor.phone}}</h4>
+                        <h5>Adresa:</h5><h4>{{instructor.street + ", " + instructor.city + ", " + instructor.country }}</h4>
+                    </div>
+                  </div>
+                    <div class="description text-center" id="Bio">
+                      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum cumque neque necessitatibus deserunt, ad dolorum illo soluta? Dolorem ducimus sint soluta praesentium quidem nisi harum rem cupiditate debitis, quis veniam!</p>
+                    </div>
+                </div>
+            </div>
+    
+      <div class="container">
+        <div class="col-md-12  text-center" id="options">
+          <!--<a routerLink="/editInstructor/{{instructor.id}}" routerLinkActive="active">
+            <button mat-raised-button color="primary">Izmena podataka</button>
+          </a>
+          <button mat-raised-button (click)="ChangeList()" color="primary">Nova lista</button>-->
+          <mat-button-toggle-group name="favoriteColor" aria-label="Favorite Color">
+            <mat-button-toggle routerLink="/editInstructor/{{instructor.id}}" routerLinkActive="active"><mat-icon>edit</mat-icon> Izmena podataka</mat-button-toggle>
+            <mat-button-toggle routerLink="/instructorCalendar/{{instructor.id}}" routerLinkActive="active"><mat-icon>calendar_today</mat-icon> Kalendar</mat-button-toggle>
+            <mat-button-toggle routerLink="/adventureReservations/{{instructor.id}}"><mat-icon>book</mat-icon> Rezervacije</mat-button-toggle>
+            <mat-button-toggle routerLink="/adventureReports/{{instructor.id}}" routerLinkActive="active"><mat-icon> insert_chart_outlined</mat-icon> Izveštaji</mat-button-toggle>
+            <mat-button-toggle data-toggle="modal" data-target="#exampleModalCenter"><mat-icon>delete</mat-icon> Obriši profil</mat-button-toggle>
+          </mat-button-toggle-group>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2 class="modal-title" id="exampleModalLongTitle">Brisanje naloga</h2>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Ako želite podneti zahtev za brisanje profila morate uneti razlog za brisanje.</p>
+                  <p>Vaš zahtev biće prosleđen administratoru koji će u najkraćem roku na njega odgovoriti. </p>
+                  <p>Dobićete imejl o njegovoj odluci.</p>
+                  <p style="font-weight: bold;">Molimo vas da još jednom razmislite o brisanju naloga!</p>
+                  <form [formGroup]="deletionForm">
+                    <!-- New Password -->
+                    <mat-form-field style="margin-top: 30px; width: 100%;">
+                        <textarea matInput placeholder="Vaš razlog..." formControlName="deletionReason" name="deletionReason"></textarea>
+                    </mat-form-field>
+                </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Nazad</button>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="DeleteProfile()">Obriši</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="text-center" id="search">
+        <form [formGroup]="form">
+          <mat-form-field>
+              <input matInput formControlName="searchNameBar" type="text" id="name" placeholder="Naziv" (keyup)="search()">
+              <button mat-button matPrefix mat-icon-button>
+                  <mat-icon>search</mat-icon>
+              </button>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput formControlName="searchLocationBar" type="text" id="location" placeholder="Lokacija" (keyup)="search()">
+            <button mat-button matPrefix mat-icon-button>
+                <mat-icon>search</mat-icon>
+            </button>
+          </mat-form-field>
+          <label>Cena:</label>
+          <mat-slider
+            #priceSlider
+            thumbLabel
+            [displayWith]="formatLabel"
+            tickInterval="1000"
+            step="1"
+            min="{{minPrice}}"
+            max="{{maxPrice}}"
+            aria-label="units"
+            (pointerup)="priceSliderOnChange(priceSlider.value)"></mat-slider>
+          <label>Kapacitet:</label>
+          <mat-slider
+            #capacitySlider
+            thumbLabel
+            [displayWith]="formatLabel"
+            tickInterval="1000"
+            step="1"
+            min="{{minCapacity}}"
+            max="{{maxCapacity}}"
+            aria-label="units"
+            (pointerup)="capacitySliderOnChange(capacitySlider.value)"></mat-slider>
+        </form>
+      </div>
+      <div class="row" id="adventureRow">
+        <div *ngFor="let a of adventures">
+          <div *ngIf="!a.deleted">
+            <div id="{{a.id}}" class="col-md-12"><app-adventure-card (OnAdventureDeleted)="OnAdventureDeleted($event)" adventureId="{{a.id}}"></app-adventure-card></div>
+          </div>          
+        </div>
+        <div *ngIf="isInstructor">
+          <a routerLink="/adventureAddNew/{{instructorId}}" routerLinkActive="active">
+      
+            <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+              <div class="cardAddNew p-4">
+                  <div class=" image d-flex flex-column justify-content-center align-items-center">
+                    
+                    <mat-icon class="icon-display">library_add</mat-icon>
+                    
+                    <div class="AddNewText">
+                      Dodaj novu avanturu
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+</div>
+

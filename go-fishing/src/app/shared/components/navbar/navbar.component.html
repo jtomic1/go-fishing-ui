@@ -1,0 +1,37 @@
+<mat-toolbar color="primary" md-position-mode="target-right target" class="flexExpand">
+    <span>GoFishing!</span>
+    <span class="right-align">
+        <button mat-raised-button color="primary" routerLink="/login" routerLinkActive="active" *ngIf="showLoginButton && !showLogoutButton">
+            <fa-icon class="fa-2x" [icon]="loginIcon" ></fa-icon>
+            Log In
+        </button>
+
+        <button mat-raised-button color="primary" class="left-spacing" routerLink="/register" routerLinkActive="active" *ngIf="showRegisterButton && !showLogoutButton"
+        >
+            <fa-icon class="fa-2x" [icon]="registerIcon"></fa-icon>
+            Register
+        </button>
+
+        <button mat-raised-button color="primary" class="left-spacing" routerLink="/" routerLinkActive="active" *ngIf="showHomeButton && !showLogoutButton">
+            <fa-icon class="fa-2x" [icon]="homeIcon"></fa-icon>
+            Home
+        </button>
+
+        <button mat-raised-button color="primary" class="left-spacing" (click)="showProfile()" *ngIf="showProfileButton">
+            <fa-icon class="fa-2x" [icon]="profileIcon"></fa-icon>
+            Profile
+        </button>
+
+        <button mat-raised-button color="primary" class="left-spacing" (click)="showStartPage()" *ngIf="showStartPageButton">
+            <fa-icon class="fa-2x" [icon]="startPageIcon"></fa-icon>
+            Start Page
+        </button>
+        
+        <button mat-raised-button color="primary" class="left-spacing" (click)="logout()" *ngIf="showLogoutButton">
+            <fa-icon class="fa-2x" [icon]="logoutIcon"></fa-icon>
+            Log Out
+        </button>
+
+    </span>
+</mat-toolbar>
+<mat-divider></mat-divider>

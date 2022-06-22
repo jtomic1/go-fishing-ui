@@ -1,0 +1,51 @@
+.example-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top:75px;
+}
+
+.main-content-card{
+    height: auto;
+    margin-left: 10px;
+}
+
+.sidebar-card{
+    height: 100%;
+    background-color: #3f51b5;
+    color:white;
+    text-align: center;
+    font-size: x-large;
+}
+
+mat-sidenav{
+    width: 15%;
+    margin-left: 5px;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    margin-top: 10px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.sidebar-item{
+    width:100%;
+    margin-top: 30px;
+    display: block;
+    height: 40px;
+    text-align: left;
+    word-wrap: break-word;
+}
+
+fa-icon{
+    margin-right: 10%;
+}
+
+button{
+    overflow-x: hidden;
+}

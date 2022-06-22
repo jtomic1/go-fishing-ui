@@ -1,0 +1,13 @@
+<div *ngIf="complaints.length === 0">
+    <mat-card>
+        <mat-card-title>Trenutno nema novih žalbi</mat-card-title>
+    </mat-card>
+    <button style="float: right; margin-right: 350px;" mat-raised-button color="warn" routerLink="/adminProfile/{{adminId}}" routerLinkActive="active">Nazad</button>
+</div>
+<div *ngIf="complaints.length !== 0">
+    <div *ngFor="let c of complaints">
+        <app-admin-complaint [complaint]="c"></app-admin-complaint>
+    </div>
+    <button style="float: right; margin-right: 350px;" mat-raised-button color="warn" routerLink="/adminProfile/{{adminId}}" routerLinkActive="active">Nazad</button>
+</div>
+

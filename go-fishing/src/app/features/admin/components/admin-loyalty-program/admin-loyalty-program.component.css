@@ -1,0 +1,30 @@
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+mat-card {
+    height: 100%;
+    width: 75%;
+}
+
+.title {
+    font-size: 1.5em;
+    display: block;
+    font-weight: bold;
+    text-align: center;
+}
+
+.main-entity-card{
+    margin-bottom: 10px;
+    transition: transform 0.2s;
+    height: 220px;
+    max-height: 300px;
+    background-color: #d5f4e6;
+}
+
+.main-entity-card:hover{
+    transform: scale(1.01);
+    cursor: pointer;
+}

@@ -1,0 +1,19 @@
+<mat-card class="main-entity-card" style="overflow-y: auto; margin-bottom: 5px;" *ngFor="let item of subscriptionList">
+    <mat-card-title-group>
+        <mat-card-title style="text-align: center;">{{item.offerName}}</mat-card-title>
+    </mat-card-title-group>
+    <mat-card-actions>
+        <mat-card-subtitle>Location: <b>{{item.offerAddress}}</b></mat-card-subtitle>
+        <mat-card-subtitle *ngIf="!item.isInstructor">Owner: <b>{{item.ownerName}}</b></mat-card-subtitle>
+        <mat-card-subtitle *ngIf="item.isInstructor">Instructor: <b>{{item.ownerName}}</b></mat-card-subtitle>
+        <mat-card-subtitle>Cost per day: <b>{{item.price | currency:'USD'}}</b></mat-card-subtitle>
+        <div>
+            <button mat-button style="color:red" *ngIf="item.subscribed" (click)="unsubscribeOffer(item.id)">UNSUBSCRIBE</button>
+            <button mat-button style="color: green" *ngIf="!item.subscribed" (click)="resubscribeOffer(item.id)">RESUBSCRIBE</button>
+        </div>
+    </mat-card-actions>
+</mat-card>
+
+<div *ngIf="totalItems === 0">
+    <app-no-entities-found></app-no-entities-found>
+</div>

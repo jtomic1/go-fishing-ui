@@ -1,0 +1,99 @@
+.example-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top:75px;
+}
+
+.main-content-card{
+    height: 100%;
+    margin-left: 10px;
+}
+
+.sidebar-card{
+    height: 100%;
+    background-color: #3f51b5;
+    color:white;
+    text-align: center;
+    font-size: x-large;
+}
+
+mat-sidenav{
+    width: 20%;
+    margin-left: 5px;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    margin-top: 10px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.sidebar-item{
+    width:100%;
+    margin-top: 30px;
+    display: block;
+    height: 40px;
+    text-align: left;
+    word-wrap: break-word;
+}
+
+fa-icon{
+    margin-right: 10%;
+}
+
+button{
+    overflow-x: hidden;
+    color: #3f51b5;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.profile-card {
+    max-width: 400px;
+    width: 100%;
+    max-height: 80%;
+    display: inline-block;
+}
+
+.title{
+    font-size: 1.5em;
+    display: block;
+    font-weight: bold;
+    text-align: center;
+}
+
+mat-form-field {
+    display: block;
+}
+
+.left-spacing {
+    margin-left: 5px;
+}
+
+.top-spacing {
+    margin-top: 15px;
+}
+
+.text-danger {
+    color: red;
+    margin-bottom: 5px;
+}
+
+.main-div {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.loyalty-badge{
+    margin-left: 0.6em;
+}
+
+h3{
+    font-weight: bold;
+}

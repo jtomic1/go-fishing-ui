@@ -1,0 +1,64 @@
+<div class="content">
+    <mat-card>
+        <h1 class="title">Prihodi sistema od rezervacija</h1>
+        <br>
+        <div style="text-align: center;">
+            <span><h2>Od svake rezervacije sistem trenutno uzima {{earningsPercentage.percentage}}%</h2></span>
+        </div>
+        <div class="edit-percentage">
+            <button mat-raised-button color="primary" data-toggle="modal" data-target="#exampleModalCenter">Izmeni</button>
+        </div>
+        <div class="datepicker">
+            <mat-form-field appearance="fill">
+                <mat-label>Unesite vremenski opseg</mat-label>
+                <mat-date-range-input id="range" [formGroup]="range" [rangePicker]="picker">
+                <input matStartDate formControlName="start" placeholder="Početak">
+                <input matEndDate formControlName="end" placeholder="Kraj">
+                </mat-date-range-input>        
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+
+                <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Neisparavno vreme</mat-error>
+                <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Neisparavno vreme</mat-error>
+            </mat-form-field>                          
+        </div>
+        <div class="show-button">
+            <span><button mat-raised-button color="primary" (click)="showReport()">Prikaži izveštaj</button></span>
+        </div>
+        <div *ngIf="displayChart">
+            <div style="text-align: center; margin-top: 25px;">
+                <span><h2>U zadatom periodu bilo je {{reservations.length}} rezervacija i sistem je zaradio {{earned | currency}}</h2></span>
+            </div>
+            <div class="chart">
+                <app-chart [data]="data" [title]="title" [x_axis]="x_axis" [y_axis]="y_axis" *ngIf="displayData"></app-chart>
+            </div>            
+        </div>
+        <div class="back">
+            <button style="float: right; margin-right: 150px;" mat-raised-button color="warn" routerLink="/adminProfile/{{adminId}}" routerLinkActive="active">Nazad</button>
+        </div>         
+    </mat-card>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Izmena procenta zarade</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="form">                        
+                    <mat-form-field style="width: 100%;">
+                        <input matInput type="number" min="1" max="49" placeholder="Unesite novi procenat zarade" formControlName="percentage" name="percentage" required>                    
+                    </mat-form-field>    
+                </form>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Nazad</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="editPercentage()">Potvrdi</button>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

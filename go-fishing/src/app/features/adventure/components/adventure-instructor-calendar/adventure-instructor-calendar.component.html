@@ -1,0 +1,31 @@
+<div>
+  <div style="padding: 50px;">
+    <mwl-demo-component [freePeriods]="freePeriods" [actions]="actions" [reservations]="reservations" *ngIf="renderCalendar === 3; else elseBlock;" >Loading...</mwl-demo-component>
+    
+    <ng-template #elseBlock>
+        <h2>Trenutno nema slobodnih termina i akcija za avanture.</h2>
+    </ng-template>
+</div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Datum i vreme početka</th>
+        <th scope="col">Datum i vreme završetka</th>
+        <th scope="col">ID ponude</th>
+        <th scope="col">Obriši</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let fp of freePeriods">
+            <th scope="row">{{fp.id}}</th>
+            <td>{{fp.startDate.day}}.{{fp.startDate.month}}.{{fp.startDate.year}}</td>
+            <td>{{fp.endDate.day}}.{{fp.endDate.month}}.{{fp.endDate.year}}</td>
+            <td>{{fp.offerId}}</td>
+            <td><button mat-raised-button (click)="deletePeriod(fp.id)" color="warn"><mat-icon>delete</mat-icon></button></td>
+        </tr>
+    </tbody>
+  </table>
+  <br />
+  <br />
+</div>

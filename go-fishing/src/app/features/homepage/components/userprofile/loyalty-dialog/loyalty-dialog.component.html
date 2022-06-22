@@ -1,0 +1,22 @@
+<mat-card class="card">
+    <h1 class="title">
+        Loyalty Program
+    </h1>
+    <mat-card-content class="card-content">
+        <h1 class="title"></h1>
+        <p>Here, at GoFishing, we appreciate our regular clients. Therefore, we want to express gratitude by introducing the <span style="font-weight: bold">GoFishing Loyalty Program</span>!</p>
+        <p>The GoFishing Loyalty Program introduces <b>loyalty points</b> for each and every user account. After every successful reservation, a certain amount of loyalty points is obtained for that account. By accumulating loyalty points, users can enjoy various benefits. Primarily, users can benefit from discounted prices on every reservation! Discount percentage is determined by the <b>loyalty category</b>.</p>
+        <p>
+            These are the loyalty categories:
+            <ul>
+                <li *ngFor="let item of loyalties" class="outline">{{item.rankName}}: {{item.minPoints}} - {{item.maxPoints}}, {{1 - item.discountRate |percent}} discount</li>
+                <!-- <li class="outline"><span style="color:#CD7F32">Bronze</span>: 0-250 points, no discount</li>
+                <li class="outline"><span style="color:#C0C0C0" class="outline">Silver</span>: 251-500 points, 5% discount</li>
+                <li class="outline"><span style="color:#FFD700" class="outline">Gold</span>: 501-1000 points, 7% discount</li>
+                <li class="outline"><span style="color:#E5E4E2" class="outline">Platinum</span>: 1001+ points, 10% discount</li> -->
+            </ul>
+    </mat-card-content>
+    <mat-card-actions style="text-align: center;">
+        <button mat-button (click)="onExitClick()">EXIT</button>
+    </mat-card-actions>
+</mat-card>

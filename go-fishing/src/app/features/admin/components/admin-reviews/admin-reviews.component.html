@@ -1,0 +1,25 @@
+<div *ngIf="reviews.length === 0">
+    <mat-card>
+        <mat-card-title>Trenutno nema novih revizija</mat-card-title>
+    </mat-card>
+    <button style="float: right; margin-right: 350px;" mat-raised-button color="warn" routerLink="/adminProfile/{{adminId}}" routerLinkActive="active">Nazad</button>
+</div>
+<div *ngIf="reviews.length !== 0" style="margin-bottom: 10px;">
+    <div *ngFor="let r of reviews">
+        
+        <mat-card class="main-entity-card" style="overflow-y: hidden">
+            <mat-card-title style="text-align: center;">Revizija {{r.id}}</mat-card-title>
+                <div class="data">
+                    <div><p><b>Ocena: </b> <b>{{r.grade}}/5</b></p></div>
+                    <div><p><b>Tekst revizije: </b>{{r.reviewText}}</p></div>
+                </div>
+        
+            
+            <mat-card-actions style="text-align: center">
+                <span><button mat-raised-button color="warn" (click)="refuse(r.id)">Odbij</button><button mat-raised-button (click)="accept(r.id)" class="success">Prihvati</button></span>
+            </mat-card-actions>
+        </mat-card>
+
+    </div>
+    <button style="float: right; margin-right: 350px;" mat-raised-button color="warn" routerLink="/adminProfile/{{adminId}}" routerLinkActive="active">Nazad</button>
+</div>

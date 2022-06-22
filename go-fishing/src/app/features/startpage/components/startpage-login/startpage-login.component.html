@@ -1,0 +1,19 @@
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="form">
+            <h2>Log In</h2>
+
+            <mat-form-field>
+                <input matInput formControlName="username" placeholder="E-mail" name="email" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput formControlName="password" type="password" placeholder="Password" name="password" required>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" (click)="loginRequest()">Log In</button>
+            <h3 class="top-spacing">Don't have an account? <a routerLink="/register" routerLinkActive="active">Register now!</a></h3>
+            <!-- <pre>{{form.value | json}}</pre> -->
+        </form>
+    </mat-card-content>
+</mat-card>

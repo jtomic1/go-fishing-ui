@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@types/node": "^17.0.23",
+    "ng": "^0.0.0"
+  }
+}

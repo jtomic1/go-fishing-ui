@@ -1,0 +1,244 @@
+<mat-tab-group mat-align-tabs="center">
+
+    <!--Clients-->
+    <mat-tab label="Klijenti">
+        <mat-card class="main-entity-card" *ngFor="let c of clientSlice">
+            <mat-card-title-group>
+                <mat-card-title>{{c.name}}  {{c.lastName}}</mat-card-title>
+                <mat-card-subtitle><b>Email:</b>{{c.email}}
+                               <br><b>Broj telefona:</b>{{c.phone}}
+                               <br><b>Ulica:</b>{{c.street}}
+                               <br><b>Grad:</b>{{c.city}}
+                               <br><b>Država:</b>{{c.country}}                               
+                </mat-card-subtitle>
+                <img class="main-entity-image" style="width: 15%; height: 10%" src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png">
+            </mat-card-title-group>    
+            <mat-card-actions style="text-align: center">
+                <span><button mat-raised-button (click)="UserBeingDeleted(c.id, 'client')" data-toggle="modal" data-target="#exampleModalCenter" color="warn">Obriši</button></span>
+            </mat-card-actions>        
+        </mat-card>
+        <mat-card *ngIf="clients.length === 0">
+            <mat-card-title-group>
+                <mat-card-title>U sistemu se ne nalazi nijedan klijent!</mat-card-title>
+            </mat-card-title-group>
+        </mat-card>
+        
+        <div class="footer">
+            <mat-paginator [length]="clients.length"
+                           [pageSize]="pageSize"
+                           [pageSizeOptions]="pageSizeOptions"
+                           (page)="onPageChangeClients($event)"
+                           >
+            
+            </mat-paginator>
+        </div>
+        <div>
+            <button style="float: right; margin-right: 150px;" mat-raised-button color="warn" routerLink="/adminProfile/{{adminId}}" routerLinkActive="active">Nazad</button>
+        </div>
+    </mat-tab>
+
+    <!--Cottage owners-->
+    <mat-tab label="Vlasnici vikendica">
+        <mat-card class="main-entity-card" *ngFor="let c of cottageOwnerSlice">
+            <mat-card-title-group>
+                <mat-card-title>{{c.name}}  {{c.lastName}}</mat-card-title>
+                <mat-card-subtitle><b>Email:</b>{{c.email}}
+                               <br><b>Broj telefona:</b>{{c.phone}}
+                               <br><b>Ulica:</b>{{c.street}}
+                               <br><b>Grad:</b>{{c.city}}
+                               <br><b>Država:</b>{{c.country}}                               
+                </mat-card-subtitle>
+                <img class="main-entity-image" style="width: 15%; height: 10%" src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png">
+            </mat-card-title-group>  
+            <mat-card-actions style="text-align: center">
+                <span><button mat-raised-button (click)="UserBeingDeleted(c.id, 'cottageOwner')" data-toggle="modal" data-target="#exampleModalCenter" color="warn">Obriši</button></span>
+            </mat-card-actions>             
+        </mat-card>
+        <mat-card *ngIf="cottageOwners.length === 0">
+            <mat-card-title-group>
+                <mat-card-title>U sistemu se ne nalazi nijedan vlasnik vikendice!</mat-card-title>
+            </mat-card-title-group>
+        </mat-card>
+        
+        <div class="footer">
+            <mat-paginator [length]="cottageOwners.length"
+                           [pageSize]="pageSize"
+                           [pageSizeOptions]="pageSizeOptions"
+                           (page)="onPageChangeCottageOwners($event)"
+                           >
+            
+            </mat-paginator>
+        </div>
+        <div>
+            <button style="float: right; margin-right: 150px;" mat-raised-button color="warn" routerLink="/adminProfile/{{adminId}}" routerLinkActive="active">Nazad</button>
+        </div>
+    </mat-tab>
+
+    <!--Cottages-->
+    <mat-tab label="Vikendice">
+        <mat-card class="main-entity-card" *ngFor="let c of cottageSlice">
+            <mat-card-title-group>
+                <mat-card-title>{{c.name}}</mat-card-title>
+                <mat-card-subtitle>
+                               <b>Cena:</b>{{c.price}}
+                               <br><b>Kapacitet:</b>{{c.capacity}}
+                               <br><b>Broj soba:</b>{{c.roomCount}}
+                               <br><b>Broj kreveta:</b>{{c.bedCount}}                                                      
+                </mat-card-subtitle>
+                <img class="main-entity-image" style="width: 18%; height: 18%" src="../../../../../assets/images/cottages/c1.jpg">
+            </mat-card-title-group>
+            <mat-card-actions style="text-align: center">
+                <span><button mat-raised-button (click)="CottageBeingDeleted(c.id)" data-toggle="modal" data-target="#exampleModalCenter" color="warn">Obriši</button></span>
+            </mat-card-actions>            
+        </mat-card>
+        <mat-card *ngIf="cottages.length === 0">
+            <mat-card-title-group>
+                <mat-card-title>U sistemu se ne nalazi nijedna vikendica!</mat-card-title>
+            </mat-card-title-group>
+        </mat-card>
+        
+        <div class="footer">
+            <mat-paginator [length]="cottages.length"
+                           [pageSize]="pageSize"
+                           [pageSizeOptions]="pageSizeOptions"
+                           (page)="onPageChangeCottages($event)"
+                           >
+            
+            </mat-paginator>
+        </div>
+        <div>
+            <button style="float: right; margin-right: 150px;" mat-raised-button color="warn" routerLink="/adminProfile/{{adminId}}" routerLinkActive="active">Nazad</button>
+        </div>        
+    </mat-tab>
+
+    <!--Boat owners-->
+    <mat-tab label="Vlasnici brodova">
+        <mat-card class="main-entity-card" *ngFor="let c of boatOwnerSlice">
+            <mat-card-title-group>
+                <mat-card-title>{{c.name}}  {{c.lastName}}</mat-card-title>
+                <mat-card-subtitle><b>Email:</b>{{c.email}}
+                               <br><b>Broj telefona:</b>{{c.phone}}
+                               <br><b>Ulica:</b>{{c.street}}
+                               <br><b>Grad:</b>{{c.city}}
+                               <br><b>Država:</b>{{c.country}}                               
+                </mat-card-subtitle>
+                <img class="main-entity-image" style="width: 15%; height: 10%" src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png">
+            </mat-card-title-group>
+            <mat-card-actions style="text-align: center">
+                <span><button mat-raised-button (click)="UserBeingDeleted(c.id, 'boatOwner')" data-toggle="modal" data-target="#exampleModalCenter" color="warn">Obriši</button></span>
+            </mat-card-actions>            
+        </mat-card>
+        <mat-card *ngIf="boatOwners.length === 0">
+            <mat-card-title-group>
+                <mat-card-title>U sistemu se ne nalazi nijedan vlasnik broda!</mat-card-title>
+            </mat-card-title-group>
+        </mat-card>
+        
+        <div class="footer">
+            <mat-paginator [length]="boatOwners.length"
+                           [pageSize]="pageSize"
+                           [pageSizeOptions]="pageSizeOptions"
+                           (page)="onPageChangeBoatOwners($event)"
+                           >
+            
+            </mat-paginator>
+        </div>
+        <div>
+            <button style="float: right; margin-right: 150px;" mat-raised-button color="warn" routerLink="/adminProfile/{{adminId}}" routerLinkActive="active">Nazad</button>
+        </div>
+    </mat-tab>
+
+    <!--Boats-->
+    <mat-tab label="Brodovi">
+        <mat-card class="main-entity-card" *ngFor="let b of boatSlice">
+            <mat-card-title-group>
+                <mat-card-title>{{b.name}}</mat-card-title>
+                <mat-card-subtitle>
+                               <b>Cena:</b>{{b.price}}    
+                               <br><b>Kapacitet: </b>{{b.capacity}}                        
+                               <br><b>Dužina: </b>{{b.length}}
+                               <br><b>Maksimalna brzina: </b>{{b.maxSpeed}}
+                               <br><b>Broj motora: </b>{{b.numOfMotors}}
+                               <br><b>Snaga motora: </b>{{b.powerOfEngines}}
+                </mat-card-subtitle>
+                <img class="main-entity-image" src="../../../../../assets/images/boats/b1.jpg">
+            </mat-card-title-group> 
+            <mat-card-actions style="text-align: center">
+                <span><button mat-raised-button (click)="BoatBeingDeleted(b.id)" data-toggle="modal" data-target="#exampleModalCenter" color="warn">Obriši</button></span>
+            </mat-card-actions>           
+        </mat-card>
+        <mat-card *ngIf="boats.length === 0">
+            <mat-card-title-group>
+                <mat-card-title>U sistemu se ne nalazi nijedan brod!</mat-card-title>
+            </mat-card-title-group>
+        </mat-card>
+        
+        <div class="footer">
+            <mat-paginator [length]="boats.length"
+                           [pageSize]="pageSize"
+                           [pageSizeOptions]="pageSizeOptions"
+                           (page)="onPageChangeBoats($event)"
+                           >
+            
+            </mat-paginator>
+        </div>
+        <div>
+            <button style="float: right; margin-right: 150px;" mat-raised-button color="warn" routerLink="/adminProfile/{{adminId}}" routerLinkActive="active">Nazad</button>
+        </div>
+    </mat-tab>
+
+    <!--Instructors-->
+    <mat-tab label="Instruktori">
+        <mat-card class="main-entity-card" *ngFor="let c of instructorSlice">
+            <mat-card-title-group>
+                <mat-card-title>{{c.name}}  {{c.lastName}}</mat-card-title>
+                <mat-card-subtitle><b>Email:</b>{{c.email}}
+                               <br><b>Broj telefona:</b>{{c.phone}}
+                               <br><b>Ulica:</b>{{c.street}}
+                               <br><b>Grad:</b>{{c.city}}
+                               <br><b>Država:</b>{{c.country}}                               
+                </mat-card-subtitle>
+                <img class="main-entity-image" style="width: 15%; height: 10%" src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png">
+            </mat-card-title-group>
+            <mat-card-actions style="text-align: center">
+                <span><button mat-raised-button (click)="UserBeingDeleted(c.id, 'instructor')" data-toggle="modal" data-target="#exampleModalCenter" color="warn">Obriši</button></span>
+            </mat-card-actions>
+        </mat-card>
+        <mat-card *ngIf="instructors.length === 0">
+            <mat-card-title-group>
+                <mat-card-title>U sistemu se ne nalazi nijedan instruktor!</mat-card-title>
+            </mat-card-title-group>
+        </mat-card>
+        
+        <div class="footer">
+            <mat-paginator [length]="instructors.length"
+                           [pageSize]="pageSize"
+                           [pageSizeOptions]="pageSizeOptions"
+                           (page)="onPageChangeInstructors($event)"
+                           >
+            
+            </mat-paginator>
+        </div>
+        <div>
+            <button style="float: right; margin-right: 150px;" mat-raised-button color="warn" routerLink="/adminProfile/{{adminId}}" routerLinkActive="active">Nazad</button>
+        </div>
+    </mat-tab>
+</mat-tab-group>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLongTitle">Da li ste sigurni da želite da obrišete ovaj entitet?</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>        
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Poništi</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="Delete()" >Obriši</button>
+        </div>
+    </div>
+    </div>
+</div>

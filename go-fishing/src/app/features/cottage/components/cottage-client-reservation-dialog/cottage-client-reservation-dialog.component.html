@@ -1,0 +1,34 @@
+<mat-card class="card">
+    <h1 class="title">Reservation Confirmation</h1>
+    <mat-card-content class="card-content">
+    <mat-divider></mat-divider>
+    <br>
+    <p>Cottage: <b>{{data.name}}</b></p>
+    <p>Price (per day): <b>{{data.pricePerDay | currency:'USD'}}</b></p>
+    <br>
+    <form [formGroup]="form">
+        <mat-form-field>
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [min]="today" [dateFilter]="data.rangeFilter" [rangePicker]="picker" #rangeInput>
+                <input matInput formControlName="startDateVal" matStartDate placeholder="Start date" #startDate>
+                <input matEndDate formControlName="endDateVal" placeholder="End date" #endDate>
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+    </form>
+
+    <br>
+    <p style="margin-top:5px">Cumulative price: <b>{{totalPrice | currency:'USD'}}</b></p>
+    <p>Loyalty discount: <b>{{1 - loyaltyDiscount | percent}}</b></p>
+    <mat-divider></mat-divider>
+    <br>
+    <br>
+    <p style="font-size:20px">TOTAL BILL: <b>{{totalFee | currency:'USD'}}</b></p>
+    </mat-card-content>
+    <mat-card-actions style="text-align: center;">
+        <button mat-button style="color:green" (click)="onConfirmClick()">CONFIRM</button>
+        <button mat-button (click)="onCancelClick()">CANCEL</button>
+    </mat-card-actions>
+</mat-card>

@@ -1,0 +1,55 @@
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <span (click)="showRating()">Prosečne ocene</span>
+        </ng-template>
+        <div class="chart">
+            <app-chart [data]="ratingsData" [title]="ratingsTitle" [x_axis]="x_axis" [y_axis]="y_axis" *ngIf="showRatings"></app-chart>
+        </div>
+        <div class="back">
+            <button style="float: right; margin-right: 150px;" mat-raised-button color="warn" routerLink="/instructorProfile/{{instructorId}}" routerLinkActive="active">Nazad</button>
+        </div>
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <span (click)="showReservations()">Rezervacije avantura</span>
+        </ng-template>
+        <div class="chart">
+            <app-chart [data]="yearData" [title]="yearTitle" [x_axis]="x_axis" [y_axis]="y_axis" *ngIf="showYear"></app-chart>                        
+        </div>
+        <div class="chart">
+            <app-chart [data]="monthData" [title]="monthTitle" [x_axis]="x_axis" [y_axis]="y_axis" *ngIf="showMonth"></app-chart>                        
+        </div>
+        <div class="chart">
+            <app-chart [data]="weekData" [title]="weekTitle" [x_axis]="x_axis" [y_axis]="y_axis" *ngIf="showWeek"></app-chart>                        
+        </div>
+        <div class="back">
+            <button style="float: right; margin-right: 150px; margin-bottom: 10px;" mat-raised-button color="warn" routerLink="/instructorProfile/{{instructorId}}" routerLinkActive="active">Nazad</button>
+        </div>
+    </mat-tab>
+    <mat-tab label="Prihodi od avantura">        
+        <div class="datepicker">
+            <mat-form-field appearance="fill">
+                <mat-label>Unesite vremenski opseg</mat-label>
+                <mat-date-range-input id="range" [formGroup]="range" [rangePicker]="picker">
+                <input matStartDate formControlName="start" placeholder="Početak">
+                <input matEndDate formControlName="end" placeholder="Kraj">
+                </mat-date-range-input>        
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+
+                <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Neisparavno vreme</mat-error>
+                <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Neisparavno vreme</mat-error>
+            </mat-form-field>                          
+        </div>
+        <div class="show-button">
+            <span><button mat-raised-button color="primary" (click)="showIncomeInDateRange()">Prikaži izveštaj</button></span>
+        </div>
+        <div class="pie-chart">
+            <app-chart-pie [data]="dataForPieChart" *ngIf="displayPieChart"></app-chart-pie>
+        </div>
+        <div class="back">
+            <button style="float: right; margin-right: 150px;" mat-raised-button color="warn" routerLink="/instructorProfile/{{instructorId}}" routerLinkActive="active">Nazad</button>
+        </div> 
+    </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,77 @@
+<mat-card class="card" >
+    <h1 class="title">Dodavanje nove rezervacije u dogovoru sa klijentom</h1>
+
+    <div [ngSwitch]="ownerType" *ngIf="offer != undefined">
+        <p *ngSwitchCase="'C'">Vikendica: <b>{{offer.name}} </b> </p>
+        <p *ngSwitchCase="'B'">Brod: <b>{{offer.name}} </b> </p>
+    
+    </div>
+    <p>Klijent: <b *ngIf="client != undefined">{{client.name }} {{client.lastName}} </b></p>
+    <p style="font-weight: bold;">Molimo Vas, odaberite datume:</p>
+   
+    <form class="row row-cols-sm-auto" style="display: grid;grid-template-columns: 30% 30% 30%">
+        <div class="col-12">
+        <div class="dp-hidden position-absolute">
+            <div class="input-group">
+            <input name="datepicker"
+                    class="form-control"
+                    ngbDatepicker
+                    #datepicker="ngbDatepicker"
+                    [autoClose]="'outside'"
+                    (dateSelect)="onDateSelection($event)"
+                    [displayMonths]="2"
+                    [dayTemplate]="t"
+                    outsideDays="hidden"
+                    [startDate]="fromDate!"
+                    [minDate]="today"
+                    tabindex="-1"
+                    style="border: 0;"
+                    >
+            <ng-template #t let-date let-focused="focused">
+                <span class="custom-day"
+                    [class.focused]="focused"
+                    [class.range]="isRange(date)"
+                    [class.faded]="isHovered(date) || isInside(date)"
+                    (mouseenter)="hoveredDate = date"
+                    (mouseleave)="hoveredDate = null">
+                {{ date.day }}
+                </span>
+            </ng-template>
+            </div>
+        </div>
+            <div class="input-group">
+                <input #dpFromDate
+                    class="form-control" placeholder="yyyy-mm-dd"
+                    name="dpFromDate"
+                    [value]="formatter.format(fromDate)"
+                    (input)="fromDate = validateInput(fromDate, dpFromDate.value)"
+                    style="display: none!important;">
+            </div>
+        </div>
+        <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button">Odaberi datume</button>
+    
+        <div class="col-12">
+        <div class="input-group">
+            <input #dpToDate
+                class="form-control" placeholder="yyyy-mm-dd"
+                name="dpToDate"
+                [value]="formatter.format(toDate)"
+                (input)="toDate = validateInput(toDate, dpToDate.value)"
+                style="display: none!important;">
+        </div>
+        </div>
+    </form>
+
+
+    <p style="margin-top: 15px;">Odabrani datumi:</p>
+    <div style="display: flex;justify-content:center; gap:50px;">
+       <b> <span>{{fromDate?.day}}.{{fromDate?.month}}.{{fromDate?.year}}</span></b> - 
+       <b> <span>{{toDate?.day}}.{{toDate?.month}}.{{toDate?.year}}</span></b>
+    </div>
+
+
+    <mat-card-actions style="text-align: center;">
+        <button mat-button style="color: rgb(0, 255, 4);" (click)="addNewReservation()">Dodaj rezervaciju</button>
+        <button mat-button (click)="cancelReport()">Odustani</button>
+    </mat-card-actions>
+</mat-card>

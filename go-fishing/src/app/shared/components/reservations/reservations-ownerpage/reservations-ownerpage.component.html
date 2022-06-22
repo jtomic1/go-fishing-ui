@@ -1,0 +1,18 @@
+
+<div appearance="fill" [ngSwitch]="ownerType">
+
+    <mat-label *ngSwitchCase="'C'">Vikendice:</mat-label>
+    <mat-label *ngSwitchCase="'B'">Brodovi:</mat-label>
+    <mat-label *ngSwitchCase="'I'">Avanture:</mat-label> 
+
+    <mat-select class="select" [ngModel]="selectedOffer" *ngIf="offers != null && offers.length > 0" (ngModelChange)="onChange($event)">
+        
+        <mat-option value="all" selected="selected">
+            Sve
+        </mat-option>
+        <mat-option *ngFor="let offer of offers" [value]="offer.id">    
+            {{offer.name}}
+        </mat-option>
+    </mat-select>
+</div>
+<app-reservations-list-view [reservations]="reservations" [ownerType]="ownerType" (changed)="onChange($event)"></app-reservations-list-view>

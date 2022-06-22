@@ -1,0 +1,36 @@
+<mat-card [hidden]="refused" class="main-entity-card" style="overflow-y: hidden">
+    <mat-card-title style="text-align: center;">Žalba {{complaint.id}}</mat-card-title>
+        <div class="data">
+            <div><p><b>{{complaint_text}}</b></p></div>
+            <div><p><b>Tekst žalbe: </b>{{complaint.text}}</p></div>
+            <div><p><b>{{penalty_point_text}}</b></p></div>            
+        </div>
+
+    
+    <mat-card-actions style="text-align: center">
+        <span><button mat-raised-button (click)="refuseComplaint()" color="warn">Odbij</button><button mat-raised-button data-toggle="modal" data-target="#exampleModalCenter" class="success">Prihvati</button></span>
+    </mat-card-actions>
+</mat-card>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLongTitle">Odgovor na žalbu</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            <mat-form-field class="example-full-width" appearance="fill" style="width: 100%;">
+                <mat-label>Odgovor</mat-label>
+                <textarea id="response" matInput placeholder="Odgovor..."></textarea>
+            </mat-form-field>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Nazad</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="sendResponse()">Pošalji</button>
+        </div>
+    </div>
+    </div>
+</div>

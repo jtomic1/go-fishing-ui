@@ -1,0 +1,88 @@
+<mat-card style="margin-bottom: 8px">
+    <mat-card-title class="title">Welcome to GoFishing!</mat-card-title>
+    <mat-card-subtitle class="title">Your number one site for all things fishing</mat-card-subtitle>
+    <img style="max-height: 300px !important" class="center-align" src="../../../../../assets/images/goFishing.jpg" alt="GoFishingLogo">
+</mat-card>
+
+<mat-divider></mat-divider>
+
+<mat-card style="height: 650px;">
+    <div width="100%" height="500px" style="text-align:center">
+        <h1>Here are some of our offers!</h1>
+        
+        <form [formGroup]="form">
+            <mat-form-field>
+                <input matInput formControlName="searchBar" type="text" placeholder="Search">
+                <button mat-button matPrefix mat-icon-button>
+                    <mat-icon>search</mat-icon>
+                </button>
+            </mat-form-field>
+        </form>
+
+        <mat-tab-group mat-align-tabs="center">
+            
+            <mat-tab label="Cottages">
+                <mat-list role="list" class="inline-list">
+                    <mat-list-item class="mat-list offer-card" role="listitem" *ngFor='let i of cottageList' (click)="redirectCottage(i.id)">
+                        <mat-card class="card-content">
+                            <mat-card-header>
+                                <mat-card-title>{{i.name}}</mat-card-title>
+                            </mat-card-header>
+                            <img mat-card-image [src]="i.image" alt="Cottage Photo">
+                            <mat-card-content>
+                                <p><b>Room Count: </b>{{i.roomCount}}</p>
+                                <p><b>Capacity: </b>{{i.capacity}} person(s)</p>
+                                <p><b>Rating: </b>{{i.rating}} / 5</p>
+                                <p><b>Price: </b>{{i.price | currency:'USD'}} per day</p>
+                            </mat-card-content>
+                        </mat-card>
+                    </mat-list-item>
+                    <p *ngIf='cottageListEmpty' style="text-align:center"> No cottages found!</p>
+                </mat-list>
+            </mat-tab>
+
+
+            <mat-tab label="Boats">
+                <mat-list role="list" class="inline-list">
+                    <mat-list-item class="mat-list offer-card" role="listitem" *ngFor='let i of boatList' (click)="redirectBoat(i.id)">
+                        <mat-card class="card-content">
+                            <mat-card-header>
+                                <mat-card-title>{{i.name}}</mat-card-title>
+                            </mat-card-header>
+                            <img mat-card-image [src]="i.image"
+                                alt="Boat Photo">
+                            <mat-card-content>
+                                <p><b>Max Speed: </b>{{i.maxSpeed}}</p>
+                                <p><b>Boat Length: </b>{{i.length}}m</p>
+                                <p><b>Capacity: </b>{{i.capacity}} person(s)</p>
+                                <p><b>Rating: </b>{{i.rating}} / 5</p>
+                                <p><b>Price: </b>{{i.price | currency:'USD'}} per day</p>
+                            </mat-card-content>
+                        </mat-card>
+                    </mat-list-item>
+                    <p *ngIf='boatListEmpty' style="text-align:center"> No boats found!</p>
+                </mat-list>
+            </mat-tab>
+
+            <mat-tab label="Adventures">
+                <mat-list role="list" class="inline-list">
+                    <mat-list-item class="mat-list offer-card" role="listitem" *ngFor='let i of adventureList' (click)="redirectAdventure(i.id)">
+                        <mat-card class="card-content">
+                            <mat-card-header>
+                                <mat-card-title>{{i.name}}</mat-card-title>
+                            </mat-card-header>
+                            <img mat-card-image [src]="i.image"
+                                alt="Adventure Photo">
+                            <mat-card-content>
+                                <p><b>Capacity: </b>{{i.capacity}} person(s)</p>
+                                <p><b>Rating: </b>{{i.rating}} / 5</p>
+                                <p><b>Price: </b>{{i.price | currency:'USD'}} per day</p>
+                            </mat-card-content>
+                        </mat-card>
+                    </mat-list-item>
+                    <p *ngIf='adventureListEmpty' style="text-align:center"> No adventures found!</p>
+                </mat-list>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</mat-card>
